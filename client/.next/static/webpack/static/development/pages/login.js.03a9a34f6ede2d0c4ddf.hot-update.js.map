@@ -1,0 +1,1 @@
+{"version":3,"file":"static/webpack/static/development/pages/login.js.03a9a34f6ede2d0c4ddf.hot-update.js","sources":["webpack:///./pages/login.js"],"sourcesContent":["const login = () => {\n  return <div>login</div>;\n};\n\nexport default login;\n"],"mappings":";;;;;;;;;;;;;;;;AAAA;AACA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA;AACA;AACA;;;;;;;;;;;;;;;;;;;;;;;A","sourceRoot":""}
