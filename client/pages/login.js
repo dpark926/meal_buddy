@@ -1,6 +1,6 @@
 const login = () => {
   return (
-    <div>
+    <div className="flex flex-column p4">
       <h1>login</h1>
       <label>Username</label>
       <input />

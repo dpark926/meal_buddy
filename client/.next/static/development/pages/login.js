@@ -62,6 +62,7 @@ var _jsxFileName = "/Users/dP/my_projects/meal_buddy/client/pages/login.js";
 
 var login = function login() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex flex-column p4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 3
