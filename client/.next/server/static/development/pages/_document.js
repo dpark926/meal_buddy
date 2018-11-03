@@ -181,23 +181,39 @@ function (_Document) {
           lineNumber: 14
         },
         __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("body", {
         className: "custom_class",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 27
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 28
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 29
         },
         __self: this
       })));

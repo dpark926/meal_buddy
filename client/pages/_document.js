@@ -15,6 +15,14 @@ export default class MyDocument extends Document {
             href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css"
             rel="stylesheet"
           />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
         </Head>
         <body className="custom_class">
           <Main />
