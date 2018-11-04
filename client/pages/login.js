@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
+import Link from "next/link";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
-class login extends React.Component {
+class login extends Component {
   state = {};
 
   handleChange = name => event => {
@@ -34,9 +35,11 @@ class login extends React.Component {
           Log In
         </Button>
         <div className="flex mt2 mb2">
-          <Button variant="contained" color="secondary">
-            Register
-          </Button>
+          <Link href="/register">
+            <Button variant="contained" color="secondary">
+              Register
+            </Button>
+          </Link>
           <Button variant="contained" color="secondary">
             Forgot Password
           </Button>
