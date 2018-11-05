@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,23 +102,23 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyDocument; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "next/document");
-/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/document */ "next/document");
+/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_jsx_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-jsx/server */ "styled-jsx/server");
+/* harmony import */ var styled_jsx_server__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_server__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/dP/my_projects/meal_buddy/client/pages/_document.js";
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -139,6 +139,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var MyDocument =
 /*#__PURE__*/
 function (_Document) {
@@ -153,30 +155,42 @@ function (_Document) {
   _createClass(MyDocument, [{
     key: "render",
     value: function render() {
+      var pageContext = this.props.pageContext;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("html", {
+        lang: "en",
+        dir: "ltr",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 11
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["Head"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 12
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("style", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+        charSet: "utf-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 13
         },
         __self: this
-      }, "body { margin: 0 } /* custom! */"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
-        href: "https://unpkg.com/basscss@8.0.2/css/basscss.min.css",
-        rel: "stylesheet",
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+        name: "viewport",
+        content: "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 15
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+        name: "theme-color",
+        content: pageContext.theme.palette.primary.main,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
@@ -184,73 +198,104 @@ function (_Document) {
         href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 24
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", {
-        className: "custom_class",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 29
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 30
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_2__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 31
         },
         __self: this
       })));
     }
-  }], [{
-    key: "getInitialProps",
-    // static async getInitialProps(ctx) {
-    //   const initialProps = await Document.getInitialProps(ctx);
-    //   return { ...initialProps };
-    // }
-    value: function getInitialProps(_ref) {
-      var renderPage = _ref.renderPage;
-      var sheet = new styled_components__WEBPACK_IMPORTED_MODULE_2__["ServerStyleSheet"]();
-      var page = renderPage(function (App) {
-        return function (props) {
-          return sheet.collectStyles(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, _extends({}, props, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 13
-            },
-            __self: this
-          })));
-        };
-      });
-      var styleTags = sheet.getStyleElement();
-      return _objectSpread({}, page, {
-        styleTags: styleTags
-      });
-    }
   }]);
 
   return MyDocument;
-}(next_document__WEBPACK_IMPORTED_MODULE_1___default.a);
+}(next_document__WEBPACK_IMPORTED_MODULE_2___default.a);
 
+MyDocument.getInitialProps = function (ctx) {
+  // Resolution order
+  //
+  // On the server:
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. document.getInitialProps
+  // 4. app.render
+  // 5. page.render
+  // 6. document.render
+  //
+  // On the server with error:
+  // 1. document.getInitialProps
+  // 2. app.render
+  // 3. page.render
+  // 4. document.render
+  //
+  // On the client
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. app.render
+  // 4. page.render
+  // Render app and page and get the context of the page with collected side effects.
+  var pageContext;
+  var page = ctx.renderPage(function (Component) {
+    var WrappedComponent = function WrappedComponent(props) {
+      pageContext = props.pageContext;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({}, props, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 66
+        },
+        __self: this
+      }));
+    };
 
+    WrappedComponent.propTypes = {
+      pageContext: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
+    };
+    return WrappedComponent;
+  });
+  return _objectSpread({}, page, {
+    pageContext: pageContext,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("style", {
+      id: "jss-server-side" // eslint-disable-next-line react/no-danger
+      ,
+      dangerouslySetInnerHTML: {
+        __html: pageContext.sheetsRegistry.toString()
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 82
+      },
+      __self: this
+    }), styled_jsx_server__WEBPACK_IMPORTED_MODULE_3___default()() || null)
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyDocument);
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!**********************************!*\
   !*** multi ./pages/_document.js ***!
   \**********************************/
@@ -273,6 +318,17 @@ module.exports = require("next/document");
 
 /***/ }),
 
+/***/ "prop-types":
+/*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -284,14 +340,14 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "styled-components":
+/***/ "styled-jsx/server":
 /*!************************************!*\
-  !*** external "styled-components" ***!
+  !*** external "styled-jsx/server" ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-components");
+module.exports = require("styled-jsx/server");
 
 /***/ })
 
