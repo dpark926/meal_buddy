@@ -12,16 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "latest",
-    "@material-ui/icons": "^3.0.1",
-    "jss": "latest",
-    "next": "latest",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-jss": "latest"
-  },
-  "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0"
+    "next": "^7.0.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   }
 }
