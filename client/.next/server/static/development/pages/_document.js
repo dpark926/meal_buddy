@@ -192,6 +192,9 @@ function (_Document) {
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", {
         className: "custom_class",
+        style: {
+          fontFamily: "'Roboto', sans-serif"
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 36
@@ -200,13 +203,13 @@ function (_Document) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 40
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 41
         },
         __self: this
       })));

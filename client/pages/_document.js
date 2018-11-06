@@ -33,7 +33,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
         </Head>
-        <body className="custom_class">
+        <body
+          className="custom_class"
+          style={{ fontFamily: "'Roboto', sans-serif" }}
+        >
           <Main />
           <NextScript />
         </body>
