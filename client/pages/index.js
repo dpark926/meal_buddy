@@ -10,6 +10,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import CommentIcon from "@material-ui/icons/Comment";
+import Typography from "@material-ui/core/Typography";
+import ingredients from "../src/ingredients";
+import { autoComplete } from "../util/functions";
 
 const Title = styled.h1`
   color: red;
@@ -50,10 +53,13 @@ class index extends Component {
   };
 
   onSubmit = e => {
+    const { item } = this.state;
     e.preventDefault();
-    const listCopy = this.state.list;
-    listCopy.push(this.state.item);
-    this.setState({ list: listCopy, item: "" });
+    if (item !== "") {
+      const listCopy = this.state.list;
+      listCopy.push(this.state.item);
+      this.setState({ list: listCopy, item: "" });
+    }
   };
 
   handleToggle = value => () => {
@@ -72,10 +78,27 @@ class index extends Component {
     });
   };
 
+  addToList = ingredient => {
+    console.log(ingredient);
+    const listCopy = this.state.list;
+    listCopy.push(ingredient.name);
+    this.setState({ list: listCopy, item: "" });
+  };
+
+  deleteItem = item => {
+    const { list } = this.state;
+    const listCopy = list;
+    const index = listCopy.indexOf(item);
+    if (index > -1) {
+      listCopy.splice(index, 1);
+    }
+    this.setState({ list: listCopy });
+  };
+
   render() {
     const { classes } = this.props;
-    const { list } = this.state;
-    console.log(this.state);
+    const { item, list } = this.state;
+
     return (
       <div>
         <main className={classes.layout}>
@@ -106,7 +129,9 @@ class index extends Component {
             </Button>
           </form>
           <div>
-            <h1>My List</h1>
+            <Typography variant="h5" component="h2">
+              My Shopping List
+            </Typography>
             <List>
               {list.map((item, idx) => {
                 return (
@@ -125,12 +150,27 @@ class index extends Component {
                     <ListItemText primary={item} />
                     <ListItemSecondaryAction>
                       <IconButton aria-label="Comments">
-                        <CommentIcon />
+                        <CommentIcon onClick={() => this.deleteItem(item)} />
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
                 );
               })}
+            </List>
+            <List>
+              {autoComplete(ingredients, item)
+                .slice(0, 5)
+                .map((ingredient, idx) => {
+                  return (
+                    <ListItem
+                      button
+                      key={idx}
+                      onClick={() => this.addToList(ingredient)}
+                    >
+                      <ListItemText primary={ingredient.name} />
+                    </ListItem>
+                  );
+                })}
             </List>
           </div>
         </main>
