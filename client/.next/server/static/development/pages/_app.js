@@ -219,8 +219,11 @@ var Header2 = function Header2(props) {
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    variant: "outlined",
-    size: "small",
+    type: "submit",
+    fullWidth: true,
+    variant: "contained",
+    color: "primary",
+    className: classes.submit,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 44

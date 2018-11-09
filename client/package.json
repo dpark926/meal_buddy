@@ -14,8 +14,10 @@
   "dependencies": {
     "@material-ui/core": "^3.4.0",
     "@material-ui/icons": "^3.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "jss": "^9.8.7",
     "next": "^7.0.2",
+    "node-sass": "^4.10.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-jss": "^8.6.1",

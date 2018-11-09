@@ -41,7 +41,13 @@ const Header2 = props => {
       </IconButton>
       <Link href="/login">
         <a>
-          <Button variant="outlined" size="small">
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
             Login
           </Button>
         </a>
