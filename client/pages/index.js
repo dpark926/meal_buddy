@@ -13,7 +13,6 @@ import CommentIcon from "@material-ui/icons/Comment";
 import Typography from "@material-ui/core/Typography";
 import ingredients from "../src/ingredients";
 import { autoComplete } from "../util/functions";
-import "../styles/styles.scss";
 
 const Title = styled.h1`
   color: red;

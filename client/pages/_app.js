@@ -31,6 +31,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 import getPageContext from "../src/getPageContext";
 import Header2 from "../components/Header2";
+import "../styles/styles.scss";
 
 class MyApp extends App {
   constructor(props) {

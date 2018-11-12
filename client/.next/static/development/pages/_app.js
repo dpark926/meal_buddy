@@ -25232,6 +25232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _src_getPageContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/getPageContext */ "./src/getPageContext.js");
 /* harmony import */ var _components_Header2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header2 */ "./components/Header2.js");
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styles.scss */ "./styles/styles.scss");
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_8__);
 var _jsxFileName = "/Users/dP/my_projects/meal_buddy/client/pages/_app.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -25287,6 +25289,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var MyApp =
 /*#__PURE__*/
 function (_App) {
@@ -25321,19 +25324,19 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 53
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 54
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 55
         },
         __self: this
       }, "My page")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -25341,7 +25344,7 @@ function (_App) {
         generateClassName: this.pageContext.generateClassName,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 58
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["MuiThemeProvider"], {
@@ -25349,19 +25352,19 @@ function (_App) {
         sheetsManager: this.pageContext.sheetsManager,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 64
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 69
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header2__WEBPACK_IMPORTED_MODULE_7__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 70
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({
@@ -25369,7 +25372,7 @@ function (_App) {
       }, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 73
         },
         __self: this
       })))));
@@ -25498,5 +25501,5 @@ module.exports = dll_10edf27d814a728d21af;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]));;
+},[[1,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=_app.js.map
