@@ -19,9 +19,14 @@ const Header2 = props => {
   const { classes } = props;
   return (
     <Toolbar className={classes.toolbarMain}>
-      <Link href="/register">
+      <Link href="/recipes">
         <a>
-          <Button size="small">Register</Button>
+          <Button size="small">Recipes</Button>
+        </a>
+      </Link>
+      <Link href="/schedule">
+        <a>
+          <Button size="small">Schedule</Button>
         </a>
       </Link>
       <Typography
@@ -39,6 +44,11 @@ const Header2 = props => {
       <IconButton>
         <SearchIcon />
       </IconButton>
+      <Link href="/register">
+        <a>
+          <Button size="small">Register</Button>
+        </a>
+      </Link>
       <Link href="/login">
         <a>
           <Button
