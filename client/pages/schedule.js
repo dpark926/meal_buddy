@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import TablePagination from "@material-ui/core/TablePagination";
 
 const sche = [
   {
@@ -79,19 +78,6 @@ const schedule = props => {
             })}
           </TableBody>
         </Table>
-        <TablePagination
-          component="div"
-          count={sche.length}
-          page={5}
-          backIconButtonProps={{
-            "aria-label": "Previous Page"
-          }}
-          nextIconButtonProps={{
-            "aria-label": "Next Page"
-          }}
-          onChangePage={() => {}}
-          onChangeRowsPerPage={() => {}}
-        />
       </Paper>
     </div>
   );
