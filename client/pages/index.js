@@ -1,16 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import Link from "next/link";
+import Layout from "../components/Layout";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import CommentIcon from "@material-ui/icons/Comment";
+import SearchIcon from "@material-ui/icons/Search";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Typography from "@material-ui/core/Typography";
-import ingredients from "../src/ingredients";
-import { autoComplete } from "../util/functions";
+import Grid from "@material-ui/core/Grid";
+import GridList from "@material-ui/core/GridList";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import red from "@material-ui/core/colors/red";
 
 const styles = theme => ({
   layout: {
@@ -26,141 +31,172 @@ const styles = theme => ({
   },
   container: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    [theme.breakpoints.up("sm")]: {
+      width: 640
+    },
+    margin: "auto"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: "100%"
+  },
+  card: {
+    width: 300
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%" // 16:9
+  },
+  actions: {
+    display: "flex"
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    }),
+    marginLeft: "auto",
+    [theme.breakpoints.up("sm")]: {
+      marginRight: -8
+    }
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
+  avatar: {
+    backgroundColor: red[500]
+  },
+  progress: {
+    margin: theme.spacing.unit * 2
   }
 });
 
 class index extends Component {
   constructor() {
     super();
-    this.state = { list: [], item: "", checked: [] };
+    this.state = { item: "" };
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://www.food2fork.com/api/search?key=8e73a901d0a38651d2c893e07ac7a753&"
+    )
+      .then(response => response.json())
+      .then(data => this.setState({ data, isLoading: false }))
+      .catch(error => this.setState({ error, isLoading: false }));
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
-    const { item } = this.state;
+  fetchData = e => {
+    this.setState({ isLoading: true });
     e.preventDefault();
-    if (item !== "") {
-      const listCopy = this.state.list;
-      listCopy.push(this.state.item);
-      this.setState({ list: listCopy, item: "" });
-    }
-  };
+    console.log(encodeURI(this.state.item));
+    console.log(encodeURIComponent(this.state.item));
 
-  handleToggle = value => () => {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked
-    });
-  };
-
-  addToList = ingredient => {
-    console.log(ingredient);
-    const listCopy = this.state.list;
-    listCopy.push(ingredient.name);
-    this.setState({ list: listCopy, item: "" });
-  };
-
-  deleteItem = item => {
-    const { list } = this.state;
-    const listCopy = list;
-    const index = listCopy.indexOf(item);
-    if (index > -1) {
-      listCopy.splice(index, 1);
-    }
-    this.setState({ list: listCopy });
+    // fetch(API + DEFAULT_QUERY)
+    fetch(
+      `https://www.food2fork.com/api/search?key=8e73a901d0a38651d2c893e07ac7a753&q=${encodeURI(
+        this.state.item
+      )}`
+    )
+      .then(response => response.json())
+      .then(data => this.setState({ data, isLoading: false }))
+      .catch(error => this.setState({ error, isLoading: false }));
   };
 
   render() {
     const { classes } = this.props;
-    const { item, list } = this.state;
+    console.log(this.state);
 
     return (
-      <div>
-        <main className={classes.layout}>
-          <form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-            onSubmit={this.onSubmit}
-          >
-            <TextField
-              id="standard-name"
-              label="Add ingredient"
-              name="item"
-              variant="outlined"
-              className={classes.textField}
-              value={this.state.item}
-              onChange={this.handleChange}
-              margin="normal"
-            />
-          </form>
-          <div>
-            <Typography variant="h5" component="h2">
-              My Shopping List
-            </Typography>
-            <List>
-              {list.map((item, idx) => {
-                return (
-                  <ListItem
-                    key={idx}
-                    role={undefined}
-                    dense
-                    button
-                    onClick={this.handleToggle(idx)}
-                  >
-                    <Checkbox
-                      checked={this.state.checked.indexOf(idx) !== -1}
-                      tabIndex={-1}
-                      disableRipple
-                    />
-                    <ListItemText primary={item} />
-                    <ListItemSecondaryAction>
-                      <IconButton aria-label="Comments">
-                        <CommentIcon onClick={() => this.deleteItem(item)} />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                );
-              })}
-            </List>
-            <List>
-              {autoComplete(ingredients, item)
-                .slice(0, 5)
-                .map((ingredient, idx) => {
+      <Layout>
+        <form
+          className={classes.container}
+          noValidate
+          autoComplete="off"
+          onSubmit={this.fetchData}
+        >
+          <TextField
+            id="standard-name"
+            label="Search for recipe"
+            name="item"
+            variant="outlined"
+            className={classes.textField}
+            value={this.state.item}
+            onChange={this.handleChange}
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <IconButton>
+                  <SearchIcon />
+                </IconButton>
+              )
+            }}
+          />
+        </form>
+        <div className="flex">
+          {this.state.data ? (
+            <Grid item xs={12}>
+              <Grid container justify="center" spacing={Number(16)}>
+                {this.state.data.recipes.map((recipe, idx) => {
                   return (
-                    <ListItem
-                      button
-                      key={idx}
-                      onClick={() => this.addToList(ingredient)}
-                    >
-                      <ListItemText primary={ingredient.name} />
-                    </ListItem>
+                    <Grid item key={idx}>
+                      <Link href={`/post?id=${recipe.recipe_id}`}>
+                        <a>
+                          <Card className={classes.card}>
+                            <CardHeader
+                              avatar={
+                                <Avatar
+                                  aria-label="Recipe"
+                                  className={classes.avatar}
+                                >
+                                  R
+                                </Avatar>
+                              }
+                              action={
+                                <IconButton>
+                                  <MoreVertIcon />
+                                </IconButton>
+                              }
+                              title={recipe.title}
+                              subheader={recipe.publisher}
+                              style={{ height: 100 }}
+                            />
+                            <CardMedia
+                              className={classes.media}
+                              image={recipe.image_url}
+                              title={recipe.title}
+                            />
+                          </Card>
+                        </a>
+                      </Link>
+                    </Grid>
                   );
                 })}
-            </List>
-          </div>
-        </main>
-      </div>
+              </Grid>
+            </Grid>
+          ) : (
+            <div className="flex m4" style={{ justifyContent: "center" }}>
+              <CircularProgress className={classes.progress} />
+            </div>
+          )}
+        </div>
+      </Layout>
     );
   }
 }
+
+// <CardContent>
+//   <Typography component="p">
+//     This impressive paella is a perfect party dish and a fun
+//     meal to cook together with your guests. Add 1 cup of
+//     frozen peas along with the mussels, if you like.
+//   </Typography>
+// </CardContent>
 
 export default withStyles(styles)(index);

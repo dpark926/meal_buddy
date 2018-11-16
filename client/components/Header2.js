@@ -48,11 +48,6 @@ const Header2 = props => {
           <a>Meal Buddy</a>
         </Link>
         <div className="ml2">
-          <Link href="/recipes">
-            <a>
-              <Button size="small">Recipes</Button>
-            </a>
-          </Link>
           <Link href="/schedule">
             <a>
               <Button size="small">Schedule</Button>
@@ -61,12 +56,7 @@ const Header2 = props => {
         </div>
       </Typography>
       <Link href="/register">
-        <a>
-          <Button size="small">Register</Button>
-        </a>
-      </Link>
-      <Link href="/login">
-        <a>
+        <a className="mr1">
           <Button
             type="submit"
             fullWidth
@@ -74,8 +64,13 @@ const Header2 = props => {
             color="primary"
             className={classes.submit}
           >
-            Login
+            Register
           </Button>
+        </a>
+      </Link>
+      <Link href="/login">
+        <a>
+          <Button size="small">Login</Button>
         </a>
       </Link>
     </Toolbar>

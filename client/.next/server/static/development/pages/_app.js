@@ -93,199 +93,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/Header2.js":
-/*!*******************************!*\
-  !*** ./components/Header2.js ***!
-  \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "@material-ui/core/Toolbar");
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__);
-var _jsxFileName = "/Users/dP/my_projects/meal_buddy/client/components/Header2.js";
-
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  return {
-    toolbarMain: {
-      borderBottom: "1px solid ".concat(theme.palette.grey[300])
-    },
-    toolbarTitle: {
-      display: "flex",
-      flex: 1
-    },
-    inputRoot: {
-      color: "inherit",
-      width: "100%"
-    },
-    inputInput: _defineProperty({
-      paddingTop: theme.spacing.unit,
-      paddingRight: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit * 10,
-      transition: theme.transitions.create("width"),
-      width: "100%"
-    }, theme.breakpoints.up("sm"), {
-      width: 120,
-      "&:focus": {
-        width: 200
-      }
-    })
-  };
-};
-
-var Header2 = function Header2(props) {
-  var classes = props.classes;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    className: classes.toolbarMain,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    component: "h2",
-    variant: "h5",
-    color: "inherit",
-    align: "left",
-    noWrap: true,
-    className: classes.toolbarTitle,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48
-    },
-    __self: this
-  }, "Meal Buddy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ml2",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/recipes",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    size: "small",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: this
-  }, "Recipes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/schedule",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    size: "small",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58
-    },
-    __self: this
-  }, "Schedule"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/register",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    size: "small",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: this
-  }, "Register"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/login",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    type: "submit",
-    fullWidth: true,
-    variant: "contained",
-    color: "primary",
-    className: classes.submit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70
-    },
-    __self: this
-  }, "Login"))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["withStyles"])(styles)(Header2));
-
-/***/ }),
-
 /***/ "./pages/_app.js":
 /*!***********************!*\
   !*** ./pages/_app.js ***!
@@ -308,9 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-jss/lib/JssProvider */ "react-jss/lib/JssProvider");
 /* harmony import */ var react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _src_getPageContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/getPageContext */ "./src/getPageContext.js");
-/* harmony import */ var _components_Header2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header2 */ "./components/Header2.js");
-/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/styles.scss */ "./styles/styles.scss");
-/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/styles.scss */ "./styles/styles.scss");
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_7__);
 var _jsxFileName = "/Users/dP/my_projects/meal_buddy/client/pages/_app.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -366,7 +172,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var MyApp =
 /*#__PURE__*/
 function (_App) {
@@ -401,19 +206,19 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 52
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 53
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 54
         },
         __self: this
       }, "My page")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_jss_lib_JssProvider__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -421,7 +226,7 @@ function (_App) {
         generateClassName: this.pageContext.generateClassName,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 57
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["MuiThemeProvider"], {
@@ -429,19 +234,13 @@ function (_App) {
         sheetsManager: this.pageContext.sheetsManager,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 63
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header2__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 68
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({
@@ -449,7 +248,7 @@ function (_App) {
       }, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 71
         },
         __self: this
       })))));
@@ -558,17 +357,6 @@ module.exports = __webpack_require__(/*! ./pages/_app.js */"./pages/_app.js");
 
 /***/ }),
 
-/***/ "@material-ui/core/Button":
-/*!*******************************************!*\
-  !*** external "@material-ui/core/Button" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Button");
-
-/***/ }),
-
 /***/ "@material-ui/core/CssBaseline":
 /*!************************************************!*\
   !*** external "@material-ui/core/CssBaseline" ***!
@@ -577,28 +365,6 @@ module.exports = require("@material-ui/core/Button");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core/CssBaseline");
-
-/***/ }),
-
-/***/ "@material-ui/core/Toolbar":
-/*!********************************************!*\
-  !*** external "@material-ui/core/Toolbar" ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Toolbar");
-
-/***/ }),
-
-/***/ "@material-ui/core/Typography":
-/*!***********************************************!*\
-  !*** external "@material-ui/core/Typography" ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Typography");
 
 /***/ }),
 
@@ -665,17 +431,6 @@ module.exports = require("next/app");
 /***/ (function(module, exports) {
 
 module.exports = require("next/head");
-
-/***/ }),
-
-/***/ "next/link":
-/*!****************************!*\
-  !*** external "next/link" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
 
 /***/ }),
 

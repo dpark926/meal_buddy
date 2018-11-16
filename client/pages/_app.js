@@ -30,7 +30,6 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 import getPageContext from "../src/getPageContext";
-import Header2 from "../components/Header2";
 import "../styles/styles.scss";
 
 class MyApp extends App {
@@ -67,7 +66,6 @@ class MyApp extends App {
           >
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Header2 />
             {/* Pass pageContext to the _document though the renderPage enhancer
                 to render collected styles on server side. */}
             <Component pageContext={this.pageContext} {...pageProps} />
