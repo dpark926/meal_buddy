@@ -103,7 +103,7 @@ class index extends Component {
           >
             <TextField
               id="standard-name"
-              label="Search for item"
+              label="Add ingredient"
               name="item"
               variant="outlined"
               className={classes.textField}

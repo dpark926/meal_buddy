@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from "next/link";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
@@ -142,33 +143,37 @@ class recipes extends Component {
             <Grid container justify="center" spacing={Number(16)}>
               {this.state.data.recipes.map((recipe, idx) => {
                 return (
-                  <Grid key={idx} item>
-                    <Card className={classes.card}>
-                      <CardHeader
-                        avatar={
-                          <Avatar
-                            aria-label="Recipe"
-                            className={classes.avatar}
-                          >
-                            R
-                          </Avatar>
-                        }
-                        action={
-                          <IconButton>
-                            <MoreVertIcon />
-                          </IconButton>
-                        }
-                        title={recipe.title}
-                        subheader={recipe.publisher}
-                        style={{ height: 100 }}
-                      />
-                      <CardMedia
-                        className={classes.media}
-                        image={recipe.image_url}
-                        title={recipe.title}
-                      />
-                    </Card>
-                  </Grid>
+                  <Link href={`/post?id=${recipe.recipe_id}`} key={idx}>
+                    <a>
+                      <Grid item>
+                        <Card className={classes.card}>
+                          <CardHeader
+                            avatar={
+                              <Avatar
+                                aria-label="Recipe"
+                                className={classes.avatar}
+                              >
+                                R
+                              </Avatar>
+                            }
+                            action={
+                              <IconButton>
+                                <MoreVertIcon />
+                              </IconButton>
+                            }
+                            title={recipe.title}
+                            subheader={recipe.publisher}
+                            style={{ height: 100 }}
+                          />
+                          <CardMedia
+                            className={classes.media}
+                            image={recipe.image_url}
+                            title={recipe.title}
+                          />
+                        </Card>
+                      </Grid>
+                    </a>
+                  </Link>
                 );
               })}
             </Grid>
