@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
+import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -13,11 +11,6 @@ import CommentIcon from "@material-ui/icons/Comment";
 import Typography from "@material-ui/core/Typography";
 import ingredients from "../src/ingredients";
 import { autoComplete } from "../util/functions";
-
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`;
 
 const styles = theme => ({
   layout: {
@@ -102,7 +95,6 @@ class index extends Component {
     return (
       <div>
         <main className={classes.layout}>
-          <Title>My page</Title>
           <form
             className={classes.container}
             noValidate
@@ -113,20 +105,12 @@ class index extends Component {
               id="standard-name"
               label="Search for item"
               name="item"
+              variant="outlined"
               className={classes.textField}
               value={this.state.item}
               onChange={this.handleChange}
               margin="normal"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Add to List
-            </Button>
           </form>
           <div>
             <Typography variant="h5" component="h2">

@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -12,6 +9,7 @@ const styles = theme => ({
     borderBottom: `1px solid ${theme.palette.grey[300]}`
   },
   toolbarTitle: {
+    display: "flex",
     flex: 1
   },
   inputRoot: {
@@ -49,29 +47,19 @@ const Header2 = props => {
         <Link href="/">
           <a>Meal Buddy</a>
         </Link>
+        <div className="ml2">
+          <Link href="/recipes">
+            <a>
+              <Button size="small">Recipes</Button>
+            </a>
+          </Link>
+          <Link href="/schedule">
+            <a>
+              <Button size="small">Schedule</Button>
+            </a>
+          </Link>
+        </div>
       </Typography>
-      <div>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
-        <InputBase
-          placeholder="Search for recipes"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput
-          }}
-        />
-      </div>
-      <Link href="/recipes">
-        <a>
-          <Button size="small">Recipes</Button>
-        </a>
-      </Link>
-      <Link href="/schedule">
-        <a>
-          <Button size="small">Schedule</Button>
-        </a>
-      </Link>
       <Link href="/register">
         <a>
           <Button size="small">Register</Button>

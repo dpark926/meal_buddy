@@ -12,6 +12,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import red from "@material-ui/core/colors/red";
 
 const styles = theme => ({
@@ -64,6 +65,9 @@ const styles = theme => ({
   },
   avatar: {
     backgroundColor: red[500]
+  },
+  progress: {
+    margin: theme.spacing.unit * 2
   }
 });
 
@@ -109,7 +113,6 @@ class recipes extends Component {
 
     return (
       <div>
-        <h1>recipes</h1>
         <form
           className={classes.container}
           noValidate
@@ -120,12 +123,13 @@ class recipes extends Component {
             id="standard-name"
             label="Search for recipe"
             name="item"
+            variant="outlined"
             className={classes.textField}
             value={this.state.item}
             onChange={this.handleChange}
             margin="normal"
             InputProps={{
-              startAdornment: (
+              endAdornment: (
                 <IconButton>
                   <SearchIcon />
                 </IconButton>
@@ -133,7 +137,7 @@ class recipes extends Component {
             }}
           />
         </form>
-        {this.state.data && (
+        {this.state.data ? (
           <Grid item xs={12}>
             <Grid container justify="center" spacing={Number(16)}>
               {this.state.data.recipes.map((recipe, idx) => {
@@ -169,6 +173,10 @@ class recipes extends Component {
               })}
             </Grid>
           </Grid>
+        ) : (
+          <div className="flex m4" style={{ justifyContent: "center" }}>
+            <CircularProgress className={classes.progress} />
+          </div>
         )}
       </div>
     );
