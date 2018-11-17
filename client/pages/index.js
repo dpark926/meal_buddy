@@ -139,49 +139,50 @@ class index extends Component {
             }}
           />
         </form>
-        <div className="flex">
+        <div className="flex" style={{ justifyContent: "center" }}>
           {this.state.data ? (
             <Grid item xs={12}>
               <Grid container justify="center" spacing={Number(16)}>
-                {this.state.data.recipes.map((recipe, idx) => {
-                  return (
-                    <Grid item key={idx}>
-                      <Link href={`/post?id=${recipe.recipe_id}`}>
-                        <a>
-                          <Card className={classes.card}>
-                            <CardHeader
-                              avatar={
-                                <Avatar
-                                  aria-label="Recipe"
-                                  className={classes.avatar}
-                                >
-                                  R
-                                </Avatar>
-                              }
-                              action={
-                                <IconButton>
-                                  <MoreVertIcon />
-                                </IconButton>
-                              }
-                              title={recipe.title}
-                              subheader={recipe.publisher}
-                              style={{ height: 100 }}
-                            />
-                            <CardMedia
-                              className={classes.media}
-                              image={recipe.image_url}
-                              title={recipe.title}
-                            />
-                          </Card>
-                        </a>
-                      </Link>
-                    </Grid>
-                  );
-                })}
+                {this.state.data.recipes &&
+                  this.state.data.recipes.map((recipe, idx) => {
+                    return (
+                      <Grid item key={idx}>
+                        <Link href={`/post?id=${recipe.recipe_id}`}>
+                          <a>
+                            <Card className={classes.card}>
+                              <CardHeader
+                                avatar={
+                                  <Avatar
+                                    aria-label="Recipe"
+                                    className={classes.avatar}
+                                  >
+                                    R
+                                  </Avatar>
+                                }
+                                action={
+                                  <IconButton>
+                                    <MoreVertIcon />
+                                  </IconButton>
+                                }
+                                title={recipe.title}
+                                subheader={recipe.publisher}
+                                style={{ height: 100 }}
+                              />
+                              <CardMedia
+                                className={classes.media}
+                                image={recipe.image_url}
+                                title={recipe.title}
+                              />
+                            </Card>
+                          </a>
+                        </Link>
+                      </Grid>
+                    );
+                  })}
               </Grid>
             </Grid>
           ) : (
-            <div className="flex m4" style={{ justifyContent: "center" }}>
+            <div className="m4">
               <CircularProgress className={classes.progress} />
             </div>
           )}

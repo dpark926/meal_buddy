@@ -8,6 +8,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import CommentIcon from "@material-ui/icons/Comment";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Typography from "@material-ui/core/Typography";
 import ingredients from "../src/ingredients";
 import { autoComplete } from "../util/functions";
@@ -32,13 +34,21 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: "100%"
+  },
+  toggle: {
+    position: "absolute",
+    display: "flex",
+    opacity: 0,
+    "&:hover": {
+      opacity: 1
+    }
   }
 });
 
 class ShoppingList extends Component {
   constructor() {
     super();
-    this.state = { list: [], item: "", checked: [], listOpen: true };
+    this.state = { list: [], item: "", checked: [], listOpen: false };
   }
 
   handleChange = e => {
@@ -100,7 +110,14 @@ class ShoppingList extends Component {
     const { item, list, listOpen } = this.state;
 
     return (
-      <div className="flex">
+      <div
+        className="flex"
+        style={{
+          height: "calc(100vh - 64px)",
+          width: !listOpen && 0,
+          borderRight: "1px solid lightgray"
+        }}
+      >
         <main
           className={classes.layout}
           style={{ display: !listOpen ? "none" : "block" }}
@@ -169,8 +186,33 @@ class ShoppingList extends Component {
           </div>
         </main>
         <div className="relative" onClick={this.onToggle}>
-          <div className="absolute">
-            {listOpen ? <p>Close</p> : <p>Open</p>}
+          <div
+            className={classes.toggle}
+            style={{ top: "-64px", height: "100vh", alignItems: "center" }}
+          >
+            {listOpen ? (
+              <div
+                className="py2 px1"
+                style={{
+                  background: "#2196f3",
+                  borderTopRightRadius: "50px",
+                  borderBottomRightRadius: "50px"
+                }}
+              >
+                <ChevronLeftIcon style={{ color: "white" }} fontSize="large" />
+              </div>
+            ) : (
+              <div
+                className="py2 px1"
+                style={{
+                  background: "#2196f3",
+                  borderTopRightRadius: "50px",
+                  borderBottomRightRadius: "50px"
+                }}
+              >
+                <ChevronRightIcon style={{ color: "white" }} fontSize="large" />
+              </div>
+            )}
           </div>
         </div>
       </div>
