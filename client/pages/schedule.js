@@ -1,3 +1,4 @@
+import Layout from "../components/Layout";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -54,7 +55,7 @@ const schedule = props => {
   const { classes } = props;
 
   return (
-    <div>
+    <Layout>
       <Paper className={classes.root}>
         <Table className={classes.table}>
           <TableHead>
@@ -79,7 +80,7 @@ const schedule = props => {
           </TableBody>
         </Table>
       </Paper>
-    </div>
+    </Layout>
   );
 };
 

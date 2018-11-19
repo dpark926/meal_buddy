@@ -6,10 +6,8 @@ const Layout = props => {
     <div>
       <Header2 />
       <div className="flex">
-        <div style={{ flexGrow: 1 }}>
-          <ShoppingList />
-        </div>
-        <div style={{ flexGrow: 4 }}>{props.children}</div>
+        <ShoppingList />
+        <div style={{ flexGrow: 5 }}>{props.children}</div>
       </div>
     </div>
   );

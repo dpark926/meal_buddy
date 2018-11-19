@@ -115,6 +115,7 @@ class ShoppingList extends Component {
         style={{
           height: "calc(100vh - 64px)",
           width: !listOpen && 0,
+          flexGrow: listOpen && 1,
           borderRight: "1px solid lightgray"
         }}
       >
@@ -192,25 +193,28 @@ class ShoppingList extends Component {
           >
             {listOpen ? (
               <div
-                className="py2 px1"
+                className="py1"
                 style={{
                   background: "#2196f3",
                   borderTopRightRadius: "50px",
                   borderBottomRightRadius: "50px"
                 }}
               >
-                <ChevronLeftIcon style={{ color: "white" }} fontSize="large" />
+                <ChevronLeftIcon style={{ color: "white" }} fontSize="medium" />
               </div>
             ) : (
               <div
-                className="py2 px1"
+                className="py1"
                 style={{
                   background: "#2196f3",
                   borderTopRightRadius: "50px",
                   borderBottomRightRadius: "50px"
                 }}
               >
-                <ChevronRightIcon style={{ color: "white" }} fontSize="large" />
+                <ChevronRightIcon
+                  style={{ color: "white" }}
+                  fontSize="medium"
+                />
               </div>
             )}
           </div>

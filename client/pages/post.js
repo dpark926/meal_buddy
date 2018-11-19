@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import Layout from "../components/Layout";
 import { withRouter } from "next/router";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+  recipeImg: {
+    width: "100%"
+  }
+});
 
 class Post extends Component {
   constructor() {
@@ -26,36 +34,45 @@ class Post extends Component {
   }
 
   render() {
-    const { router } = this.props;
+    const { router, classes } = this.props;
     const { data } = this.state;
     console.log(this.state);
 
     return (
-      <div>
+      <Layout>
         {data && (
-          <div>
-            <Link href={data.recipe.source_url}>
-              <a>
-                <img src={data.recipe.image_url} height="150" width="150" />
-                <p>{data.recipe.title}</p>
-                <p>From: {data.recipe.publisher}</p>
-              </a>
-            </Link>
-            <List>
-              <p>Ingredients</p>
-              {data.recipe.ingredients.map((ingredient, idx) => {
-                return (
-                  <ListItem key={idx} role={undefined} dense button>
-                    <ListItemText primary={ingredient} />
-                  </ListItem>
-                );
-              })}
-            </List>
+          <div className="flex p2">
+            <div className="px3 center">
+              <Link href={data.recipe.source_url}>
+                <a className="h1 center">{data.recipe.title}</a>
+              </Link>
+              <p className="h4 center">From: {data.recipe.publisher}</p>
+              <Link href={data.recipe.source_url}>
+                <a>
+                  <img
+                    src={data.recipe.image_url}
+                    className={classes.recipeImg}
+                  />
+                </a>
+              </Link>
+            </div>
+            <div className="p2">
+              <List>
+                <p className="h3">Ingredients</p>
+                {data.recipe.ingredients.map((ingredient, idx) => {
+                  return (
+                    <ListItem key={idx} role={undefined} dense button>
+                      <ListItemText primary={ingredient} />
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </div>
           </div>
         )}
-      </div>
+      </Layout>
     );
   }
 }
 
-export default withRouter(Post);
+export default withRouter(withStyles(styles)(Post));
