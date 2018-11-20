@@ -6,7 +6,11 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   toolbarMain: {
-    borderBottom: `1px solid ${theme.palette.grey[300]}`
+    borderBottom: `1px solid ${theme.palette.grey[300]}`,
+    position: "fixed",
+    width: "100%",
+    background: "white",
+    zIndex: 10
   },
   toolbarTitle: {
     display: "flex",

@@ -48,7 +48,7 @@ const styles = theme => ({
 class ShoppingList extends Component {
   constructor() {
     super();
-    this.state = { list: [], item: "", checked: [], listOpen: false };
+    this.state = { list: [], item: "", checked: [] };
   }
 
   handleChange = e => {
@@ -98,20 +98,13 @@ class ShoppingList extends Component {
     this.setState({ list: listCopy });
   };
 
-  onToggle = () => {
-    const { listOpen } = this.state;
-    this.setState({
-      listOpen: !listOpen
-    });
-  };
-
   render() {
-    const { classes } = this.props;
-    const { item, list, listOpen } = this.state;
+    const { classes, onToggle, listOpen } = this.props;
+    const { item, list } = this.state;
 
     return (
       <div
-        className="flex"
+        className="flex fixed"
         style={{
           height: "calc(100vh - 64px)",
           width: !listOpen && 0,
@@ -186,7 +179,7 @@ class ShoppingList extends Component {
             </List>
           </div>
         </main>
-        <div className="relative" onClick={this.onToggle}>
+        <div className="relative" onClick={onToggle}>
           <div
             className={classes.toggle}
             style={{ top: "-64px", height: "100vh", alignItems: "center" }}
@@ -200,7 +193,7 @@ class ShoppingList extends Component {
                   borderBottomRightRadius: "50px"
                 }}
               >
-                <ChevronLeftIcon style={{ color: "white" }} fontSize="medium" />
+                <ChevronLeftIcon style={{ color: "white" }} fontSize="small" />
               </div>
             ) : (
               <div
