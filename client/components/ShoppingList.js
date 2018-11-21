@@ -193,7 +193,10 @@ class ShoppingList extends Component {
                   borderBottomRightRadius: "50px"
                 }}
               >
-                <ChevronLeftIcon style={{ color: "white" }} fontSize="small" />
+                <ChevronLeftIcon
+                  style={{ color: "white" }}
+                  fontSize="default"
+                />
               </div>
             ) : (
               <div
@@ -206,7 +209,7 @@ class ShoppingList extends Component {
               >
                 <ChevronRightIcon
                   style={{ color: "white" }}
-                  fontSize="medium"
+                  fontSize="default"
                 />
               </div>
             )}
