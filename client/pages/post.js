@@ -33,6 +33,12 @@ class Post extends Component {
       .catch(error => this.setState({ error, isLoading: false }));
   }
 
+  addToList = () => {
+    const { data } = this.state;
+
+    this.setState({ list: data.recipe });
+  };
+
   render() {
     const { router, classes } = this.props;
     const { data } = this.state;
@@ -67,6 +73,7 @@ class Post extends Component {
                   );
                 })}
               </List>
+              <button onClick={this.addToList}>Add to List</button>
             </div>
           </div>
         )}

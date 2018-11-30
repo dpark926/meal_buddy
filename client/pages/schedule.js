@@ -43,31 +43,28 @@ class schedule extends Component {
     const sche = {};
 
     days.forEach((day, idx) => {
-      sche[day.toLowerCase()] = { breakfast: "hey", lunch: "", dinner: "" };
+      sche[day.toLowerCase()] = { breakfast: "", lunch: "", dinner: "" };
     });
 
-    this.setState(sche);
+    this.setState({ sche: sche });
   }
 
-  addToMon = () => {
-    console.log("hey");
+  addToMon = (day, type, meal) => {
+    console.log(day.toLowerCase(), type);
+
+    const copy = this.state.sche;
+
+    copy[day.toLowerCase()][type] = meal;
+
+    this.setState(copy);
   };
 
   render() {
     const { classes } = this.props;
-    const {
-      sunday,
-      monday,
-      tuesday,
-      wednesday,
-      thursday,
-      friday,
-      saturday,
-      days
-    } = this.state;
+    const { sche, days } = this.state;
 
     console.log(this.state);
-    console.log(sunday);
+    console.log(sche);
 
     return (
       <Layout>
@@ -81,26 +78,71 @@ class schedule extends Component {
                 <TableCell>Dinner</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {days.map((day, idx) => {
-                return (
-                  <TableRow className="border" key={idx}>
-                    <TableCell>{day.slice(0, 3)}</TableCell>
-                    <TableCell onClick={this.addToMon}>
-                      {day.breakfast}
-                    </TableCell>
-                    <TableCell>{day.lunch}</TableCell>
-                    <TableCell>{day.dinner}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
+            {sche && (
+              <TableBody>
+                {days.map((day, idx) => {
+                  return (
+                    <TableRow className="border" key={idx}>
+                      <TableCell>{day.slice(0, 3)}</TableCell>
+                      <TableCell
+                        onClick={() => {
+                          sche[day.toLowerCase()].breakfast === ""
+                            ? this.addToMon(
+                                day,
+                                "breakfast",
+                                "Jalapeno Popper Grilled Cheese Sandwich"
+                              )
+                            : console.log("delete");
+                        }}
+                      >
+                        {sche[day.toLowerCase()].breakfast}
+                      </TableCell>
+                      <TableCell
+                        onClick={() =>
+                          this.addToMon(
+                            day,
+                            "lunch",
+                            "Jalapeno Popper Grilled Cheese Sandwich"
+                          )
+                        }
+                      >
+                        {sche[day.toLowerCase()].lunch}
+                      </TableCell>
+                      <TableCell
+                        onClick={() =>
+                          this.addToMon(
+                            day,
+                            "dinner",
+                            "Jalapeno Popper Grilled Cheese Sandwich"
+                          )
+                        }
+                      >
+                        {sche[day.toLowerCase()].dinner}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            )}
           </Table>
         </Paper>
       </Layout>
     );
   }
 }
+
+// {sche && (
+//   <TableBody>
+//     <TableRow className="border">
+//       <TableCell>{days[0].slice(0, 3)}</TableCell>
+//       <TableCell onClick={this.addToMon}>
+//         {sche.monday.breakfast}
+//       </TableCell>
+//       <TableCell>{sche.monday.lunch}</TableCell>
+//       <TableCell>{sche.monday.dinner}</TableCell>
+//     </TableRow>
+//   </TableBody>
+// )}
 
 // {thisWeek.map((day, idx) => {
 //   return (

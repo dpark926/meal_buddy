@@ -529,3 +529,36 @@ const ingredients = [
 ];
 
 export default ingredients;
+
+const test = {
+  user_id: 1,
+  first_name: "John",
+  last_name: "Doe",
+  email: "test123@gmail.com",
+  password: "password",
+  schedule: {
+    2018: {
+      11: {
+        20: {
+          breakfast: "",
+          lunch: "",
+          dinner: ""
+        },
+        21: {
+          breakfast: "",
+          lunch: "",
+          dinner: ""
+        }
+      }
+    },
+    2017: {
+      11: {
+        20: {
+          breakfast: "",
+          lunch: "",
+          dinner: ""
+        }
+      }
+    }
+  }
+};
