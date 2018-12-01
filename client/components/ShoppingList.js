@@ -7,12 +7,14 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
-import CommentIcon from "@material-ui/icons/Comment";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Typography from "@material-ui/core/Typography";
 import ingredients from "../src/ingredients";
 import { autoComplete } from "../util/functions";
+import { connect } from "react-redux";
+import { getItems } from "../actions/itemActions";
 
 const styles = theme => ({
   layout: {
@@ -84,7 +86,7 @@ class ShoppingList extends Component {
   addToList = ingredient => {
     console.log(ingredient);
     const listCopy = this.state.list;
-    listCopy.push(ingredient.name);
+    listCopy.push(ingredient);
     this.setState({ list: listCopy, item: "" });
   };
 
@@ -102,6 +104,9 @@ class ShoppingList extends Component {
     const { classes, onToggle, listOpen } = this.props;
     const { item, list } = this.state;
 
+    console.log(this.props);
+    console.log(this.state);
+
     return (
       <div
         className="flex fixed"
@@ -116,6 +121,14 @@ class ShoppingList extends Component {
           className={classes.layout}
           style={{ display: !listOpen ? "none" : "block" }}
         >
+          {this.props.list.list &&
+            this.props.list.list.map((recipe, idx) => {
+              return (
+                <div key={idx}>
+                  <p>{recipe.title}</p>
+                </div>
+              );
+            })}
           <form
             className={classes.container}
             noValidate
@@ -139,6 +152,8 @@ class ShoppingList extends Component {
             </Typography>
             <List>
               {list.map((item, idx) => {
+                const strikethrough = this.state.checked.includes(idx);
+
                 return (
                   <ListItem
                     key={idx}
@@ -146,22 +161,31 @@ class ShoppingList extends Component {
                     dense
                     button
                     onClick={this.handleToggle(idx)}
+                    style={{ padding: 0 }}
                   >
                     <Checkbox
                       checked={this.state.checked.indexOf(idx) !== -1}
                       tabIndex={-1}
                       disableRipple
                     />
-                    <ListItemText primary={item} />
+                    <ListItemText
+                      primary={item.name}
+                      style={{
+                        textDecoration: strikethrough && "line-through"
+                      }}
+                    />
                     <ListItemSecondaryAction>
                       <IconButton aria-label="Comments">
-                        <CommentIcon onClick={() => this.deleteItem(item)} />
+                        <DeleteOutlineIcon
+                          onClick={() => this.deleteItem(item)}
+                        />
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
                 );
               })}
             </List>
+
             <List>
               {autoComplete(ingredients, item)
                 .slice(0, 5)
@@ -220,4 +244,15 @@ class ShoppingList extends Component {
   }
 }
 
-export default withStyles(styles)(ShoppingList);
+const mapStateToProps = state => {
+  return state;
+};
+
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { getItems }
+  )(ShoppingList)
+);
+
+const shoppingList = { dairy: [], vegetables: [], fruits: [] };

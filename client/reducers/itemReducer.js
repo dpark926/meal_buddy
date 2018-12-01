@@ -1,6 +1,6 @@
 import { GET_ITEMS, ADD_ITEMS, DELETE_ITEMS } from "../actions/types";
 
-const initialState = {};
+const initialState = { list: [] };
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
@@ -9,10 +9,11 @@ export default function(state = initialState, { type, payload }) {
         ...state
       };
     case ADD_ITEMS:
-      return {
-        ...state,
-        ...payload
-      };
+      console.log(state.list);
+      const copy = state;
+      copy.list.push(payload);
+      console.log(copy);
+      return { ...copy };
     default:
       return state;
   }

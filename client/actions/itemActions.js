@@ -10,8 +10,6 @@ export const addItems = data => {
   console.log(data);
   return {
     type: ADD_ITEMS,
-    payload: {
-      list: data
-    }
+    payload: data
   };
 };

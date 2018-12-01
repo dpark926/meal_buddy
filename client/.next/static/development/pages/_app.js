@@ -21778,7 +21778,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var initialState = {};
+var initialState = {
+  list: []
+};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 
@@ -21791,7 +21793,11 @@ var initialState = {};
       return _objectSpread({}, state);
 
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ITEMS"]:
-      return _objectSpread({}, state, payload);
+      console.log(state.list);
+      var copy = state;
+      copy.list.push(payload);
+      console.log(copy);
+      return _objectSpread({}, copy);
 
     default:
       return state;
