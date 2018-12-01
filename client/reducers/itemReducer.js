@@ -9,10 +9,8 @@ export default function(state = initialState, { type, payload }) {
         ...state
       };
     case ADD_ITEMS:
-      console.log(state.list);
       const copy = state;
       copy.list.push(payload);
-      console.log(copy);
       return { ...copy };
     default:
       return state;

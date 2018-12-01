@@ -21793,10 +21793,8 @@ var initialState = {
       return _objectSpread({}, state);
 
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ITEMS"]:
-      console.log(state.list);
       var copy = state;
       copy.list.push(payload);
-      console.log(copy);
       return _objectSpread({}, copy);
 
     default:

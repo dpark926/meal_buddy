@@ -12,7 +12,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Typography from "@material-ui/core/Typography";
 import ingredients from "../src/ingredients";
-import { autoComplete } from "../util/functions";
+import { autoComplete, sortShoppingList } from "../util/functions";
 import { connect } from "react-redux";
 import { getItems } from "../actions/itemActions";
 
@@ -103,9 +103,15 @@ class ShoppingList extends Component {
   render() {
     const { classes, onToggle, listOpen } = this.props;
     const { item, list } = this.state;
+    const sortedList = sortShoppingList(list);
+    const newList = [];
 
-    console.log(this.props);
-    console.log(this.state);
+    for (let key in sortedList) {
+      newList.push(key);
+      for (let i = 0; i < sortedList[key].length; i++) {
+        newList.push(sortedList[key][i]);
+      }
+    }
 
     return (
       <div
@@ -121,8 +127,8 @@ class ShoppingList extends Component {
           className={classes.layout}
           style={{ display: !listOpen ? "none" : "block" }}
         >
-          {this.props.list.list &&
-            this.props.list.list.map((recipe, idx) => {
+          {this.props.list &&
+            this.props.list.map((recipe, idx) => {
               return (
                 <div key={idx}>
                   <p>{recipe.title}</p>
@@ -146,43 +152,54 @@ class ShoppingList extends Component {
               margin="normal"
             />
           </form>
+
           <div className="p2">
             <Typography variant="h5" component="h5" align="center">
               My Shopping List
             </Typography>
             <List>
-              {list.map((item, idx) => {
+              {newList.map((item, idx) => {
                 const strikethrough = this.state.checked.includes(idx);
 
-                return (
-                  <ListItem
-                    key={idx}
-                    role={undefined}
-                    dense
-                    button
-                    onClick={this.handleToggle(idx)}
-                    style={{ padding: 0 }}
-                  >
-                    <Checkbox
-                      checked={this.state.checked.indexOf(idx) !== -1}
-                      tabIndex={-1}
-                      disableRipple
-                    />
-                    <ListItemText
-                      primary={item.name}
-                      style={{
-                        textDecoration: strikethrough && "line-through"
-                      }}
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton aria-label="Comments">
-                        <DeleteOutlineIcon
-                          onClick={() => this.deleteItem(item)}
-                        />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                );
+                if (typeof item === "string") {
+                  return (
+                    <div key={idx}>
+                      <Typography variant="h6" component="h6" align="left">
+                        {item.toUpperCase()}
+                      </Typography>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <ListItem
+                      key={idx}
+                      role={undefined}
+                      dense
+                      button
+                      onClick={this.handleToggle(idx)}
+                      style={{ padding: 0 }}
+                    >
+                      <Checkbox
+                        checked={this.state.checked.indexOf(idx) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                      />
+                      <ListItemText
+                        primary={item.name}
+                        style={{
+                          textDecoration: strikethrough && "line-through"
+                        }}
+                      />
+                      <ListItemSecondaryAction>
+                        <IconButton aria-label="Comments">
+                          <DeleteOutlineIcon
+                            onClick={() => this.deleteItem(item)}
+                          />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                  );
+                }
               })}
             </List>
 
@@ -245,7 +262,7 @@ class ShoppingList extends Component {
 }
 
 const mapStateToProps = state => {
-  return state;
+  return state.list;
 };
 
 export default withStyles(styles)(
@@ -254,5 +271,3 @@ export default withStyles(styles)(
     { getItems }
   )(ShoppingList)
 );
-
-const shoppingList = { dairy: [], vegetables: [], fruits: [] };

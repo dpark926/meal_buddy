@@ -66,3 +66,19 @@ export const currentWeek = () => {
 
   return thisWeek;
 };
+
+export const sortShoppingList = list => {
+  const sorted = {};
+
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+
+    if (sorted[item.category]) {
+      sorted[item.category] = [...sorted[item.category], item];
+    } else {
+      sorted[item.category] = [item];
+    }
+  }
+
+  return sorted;
+};

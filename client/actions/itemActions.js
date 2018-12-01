@@ -7,7 +7,6 @@ export const getItems = () => {
 };
 
 export const addItems = data => {
-  console.log(data);
   return {
     type: ADD_ITEMS,
     payload: data
