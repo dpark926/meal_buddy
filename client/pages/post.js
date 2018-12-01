@@ -5,7 +5,10 @@ import { withRouter } from "next/router";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { connect } from "react-redux";
+import { getItems, addItems } from "../actions/itemActions";
 
 const styles = theme => ({
   recipeImg: {
@@ -22,6 +25,8 @@ class Post extends Component {
   componentDidMount() {
     const { router } = this.props;
 
+    this.props.getItems();
+
     console.log(router);
     fetch(
       `https://www.food2fork.com/api/get?key=8e73a901d0a38651d2c893e07ac7a753&rId=${
@@ -36,17 +41,19 @@ class Post extends Component {
   addToList = () => {
     const { data } = this.state;
 
-    this.setState({ list: data.recipe });
+    // this.setState({ list: data.recipe });
+    this.props.addItems(data.recipe);
   };
 
   render() {
     const { router, classes } = this.props;
     const { data } = this.state;
     console.log(this.state);
+    console.log(this.props);
 
     return (
       <Layout>
-        {data && (
+        {data ? (
           <div className="flex p2">
             <div className="px3 center">
               <Link href={data.recipe.source_url}>
@@ -76,10 +83,26 @@ class Post extends Component {
               <button onClick={this.addToList}>Add to List</button>
             </div>
           </div>
+        ) : (
+          <div className="m4 center">
+            <CircularProgress className={classes.progress} />
+            <button onClick={this.addToList}>Add to List</button>
+          </div>
         )}
       </Layout>
     );
   }
 }
 
-export default withRouter(withStyles(styles)(Post));
+const mapStateToProps = state => {
+  return state;
+};
+
+export default withRouter(
+  withStyles(styles)(
+    connect(
+      mapStateToProps,
+      { getItems, addItems }
+    )(Post)
+  )
+);
