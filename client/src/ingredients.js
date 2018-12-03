@@ -1,4 +1,4 @@
-const ingredients = [
+const ingredientList = [
   { name: "butter", category: "dairy" },
   { name: "egg", category: "dairy" },
   { name: "milk", category: "dairy" },
@@ -528,7 +528,7 @@ const ingredients = [
   { name: "sea urchin", category: "seafood" }
 ];
 
-export default ingredients;
+export default ingredientList;
 
 const test = {
   user_id: 1,

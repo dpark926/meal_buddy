@@ -11,7 +11,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Typography from "@material-ui/core/Typography";
-import ingredients from "../src/ingredients";
+import ingredientList from "../src/ingredients";
 import { autoComplete, sortShoppingList } from "../util/functions";
 import { connect } from "react-redux";
 import { getItems } from "../actions/itemActions";
@@ -103,7 +103,36 @@ class ShoppingList extends Component {
   render() {
     const { classes, onToggle, listOpen } = this.props;
     const { item, list } = this.state;
-    const sortedList = sortShoppingList(list);
+
+    console.log(this.state);
+    console.log(this.props);
+
+    let allIngredients = [];
+
+    for (let i = 0; i < this.props.list.length; i++) {
+      allIngredients = [...allIngredients, ...this.props.list[i].ingredients];
+    }
+
+    console.log(allIngredients);
+
+    let result = [];
+
+    if (ingredientList && this.props.list.length !== 0) {
+      result = ingredientList.filter(ingredient => {
+        return allIngredients
+          .join(" ")
+          .toLowerCase()
+          .includes(ingredient.name);
+      });
+    }
+
+    console.log(result);
+
+    // const newNewList = [...newList, ...result];
+    //
+    // console.log(newNewList);
+
+    const sortedList = sortShoppingList([...list, ...result]);
     const newList = [];
 
     for (let key in sortedList) {
@@ -157,7 +186,7 @@ class ShoppingList extends Component {
             <Typography variant="h5" component="h5" align="center">
               My Shopping List
             </Typography>
-            <List>
+            <List style={{ height: 350, overflow: "auto" }}>
               {newList.map((item, idx) => {
                 const strikethrough = this.state.checked.includes(idx);
 
@@ -204,7 +233,7 @@ class ShoppingList extends Component {
             </List>
 
             <List>
-              {autoComplete(ingredients, item)
+              {autoComplete(ingredientList, item)
                 .slice(0, 5)
                 .map((ingredient, idx) => {
                   return (
