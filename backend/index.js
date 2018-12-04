@@ -10,7 +10,10 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 
 mongoose
-  .connect(db)
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
