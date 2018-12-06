@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
+const posts = require("./routes/api/posts");
 const db = require("./config/keys").mongoURI;
 const Joi = require("joi");
 
@@ -136,6 +137,7 @@ require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
+app.use("/api/posts", posts);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
