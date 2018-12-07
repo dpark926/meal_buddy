@@ -48,8 +48,6 @@ class Post extends Component {
   render() {
     const { router, classes } = this.props;
     const { data } = this.state;
-    console.log(this.state);
-    console.log(this.props);
 
     return (
       <Layout>

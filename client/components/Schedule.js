@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Layout from "../components/Layout";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -20,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-class schedule extends Component {
+class Schedule extends Component {
   constructor() {
     super();
     this.state = {
@@ -63,11 +62,8 @@ class schedule extends Component {
     const { classes } = this.props;
     const { sche, days } = this.state;
 
-    console.log(this.state);
-    console.log(sche);
-
     return (
-      <Layout>
+      <div>
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
@@ -126,7 +122,7 @@ class schedule extends Component {
             )}
           </Table>
         </Paper>
-      </Layout>
+      </div>
     );
   }
 }
@@ -155,4 +151,4 @@ class schedule extends Component {
 //   );
 // })}
 
-export default withStyles(styles)(schedule);
+export default withStyles(styles)(Schedule);

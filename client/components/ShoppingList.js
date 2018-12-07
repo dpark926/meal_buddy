@@ -181,12 +181,33 @@ class ShoppingList extends Component {
               margin="normal"
             />
           </form>
-
-          <div className="p2">
-            <Typography variant="h5" component="h5" align="center">
+          {item && (
+            <div
+              className="absolute px1 col-12"
+              style={{ background: "white", marginTop: -8, zIndex: 1 }}
+            >
+              <List>
+                {autoComplete(ingredientList, item)
+                  .slice(0, 5)
+                  .map((ingredient, idx) => {
+                    return (
+                      <ListItem
+                        button
+                        key={idx}
+                        onClick={() => this.addToList(ingredient)}
+                      >
+                        <ListItemText primary={ingredient.name} />
+                      </ListItem>
+                    );
+                  })}
+              </List>
+            </div>
+          )}
+          <div className="px2">
+            <Typography variant="h6" component="h6" align="center">
               My Shopping List
             </Typography>
-            <List style={{ height: 350, overflow: "auto" }}>
+            <List>
               {newList.map((item, idx) => {
                 const strikethrough = this.state.checked.includes(idx);
 
@@ -230,22 +251,6 @@ class ShoppingList extends Component {
                   );
                 }
               })}
-            </List>
-
-            <List>
-              {autoComplete(ingredientList, item)
-                .slice(0, 5)
-                .map((ingredient, idx) => {
-                  return (
-                    <ListItem
-                      button
-                      key={idx}
-                      onClick={() => this.addToList(ingredient)}
-                    >
-                      <ListItemText primary={ingredient.name} />
-                    </ListItem>
-                  );
-                })}
             </List>
           </div>
         </main>

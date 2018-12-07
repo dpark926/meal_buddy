@@ -2,6 +2,7 @@ import Link from "next/link";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -49,15 +50,15 @@ const Header2 = props => {
         className={classes.toolbarTitle}
       >
         <Link href="/">
-          <a>Meal Buddy</a>
+          <a className="flex" style={{ alignItems: "center" }}>
+            <ShoppingBasketIcon
+              style={{ color: "red" }}
+              className="mr1"
+              fontSize="large"
+            />
+            <span className="bold">MEAL</span>BUDDY
+          </a>
         </Link>
-        <div className="ml2">
-          <Link href="/schedule">
-            <a>
-              <Button size="small">Schedule</Button>
-            </a>
-          </Link>
-        </div>
       </Typography>
       <Link href="/register">
         <a className="mr1">
