@@ -4,7 +4,7 @@
 /*!**************************!*\
   !*** ./actions/types.js ***!
   \**************************/
-/*! exports provided: GET_ITEMS, ADD_ITEMS, DELETE_ITEMS */
+/*! exports provided: GET_ITEMS, ADD_ITEMS, DELETE_ITEMS, GET_RECIPES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,9 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ITEMS", function() { return GET_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ITEMS", function() { return ADD_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ITEMS", function() { return DELETE_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_RECIPES", function() { return GET_RECIPES; });
 var GET_ITEMS = "GET_ITEMS";
 var ADD_ITEMS = "ADD_ITEMS";
 var DELETE_ITEMS = "DELETE_ITEMS";
+var GET_RECIPES = "GET_RECIPES";
 
 /***/ }),
 
@@ -21755,10 +21757,13 @@ function (_App) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _itemReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./itemReducer */ "./reducers/itemReducer.js");
+/* harmony import */ var _recipeReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipeReducer */ "./reducers/recipeReducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  list: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  list: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  recipe: _recipeReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -21796,6 +21801,40 @@ var initialState = {
       var copy = state;
       copy.list.push(payload);
       return _objectSpread({}, copy);
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./reducers/recipeReducer.js":
+/*!***********************************!*\
+  !*** ./reducers/recipeReducer.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ "./actions/types.js");
+
+var initialState = {
+  recipesData: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined,
+      type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["GET_RECIPES"]:
+      return {
+        recipesData: payload
+      };
 
     default:
       return state;

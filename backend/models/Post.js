@@ -12,8 +12,8 @@ const PostSchema = new Schema({
     required: true
   },
   shoppingList: {
-    type: [String],
-    required: true
+    type: [String]
+    // required: true
   },
   date: {
     type: Date,

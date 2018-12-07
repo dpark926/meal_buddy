@@ -16,6 +16,9 @@ import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import red from "@material-ui/core/colors/red";
+import { keys } from "../config/keys";
+import { connect } from "react-redux";
+import { getRecipes } from "../actions/recipeActions";
 
 const styles = theme => ({
   layout: {
@@ -80,38 +83,31 @@ class index extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      "https://www.food2fork.com/api/search?key=8e73a901d0a38651d2c893e07ac7a753&"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ data, isLoading: false }))
-      .catch(error => this.setState({ error, isLoading: false }));
+    this.props.getRecipes();
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  fetchData = e => {
-    this.setState({ isLoading: true });
+  searchRecipe = e => {
     e.preventDefault();
-    console.log(encodeURI(this.state.item));
-    console.log(encodeURIComponent(this.state.item));
 
     // fetch(API + DEFAULT_QUERY)
-    fetch(
-      `https://www.food2fork.com/api/search?key=8e73a901d0a38651d2c893e07ac7a753&q=${encodeURI(
-        this.state.item
-      )}`
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ data, isLoading: false }))
-      .catch(error => this.setState({ error, isLoading: false }));
+    this.props.getRecipes(encodeURI(this.state.item));
+
+    // fetch(
+    //   `${keys.food2forkAPI}key=${keys.food2forkAPIKey}&q=${encodeURI(
+    //     this.state.item
+    //   )}`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ data, isLoading: false }))
+    //   .catch(error => this.setState({ error, isLoading: false }));
   };
 
   render() {
-    const { classes } = this.props;
-    console.log(this.state);
+    const { classes, recipesData } = this.props;
 
     return (
       <Layout>
@@ -119,7 +115,7 @@ class index extends Component {
           className={classes.container}
           noValidate
           autoComplete="off"
-          onSubmit={this.fetchData}
+          onSubmit={this.searchRecipe}
         >
           <TextField
             id="standard-name"
@@ -140,25 +136,17 @@ class index extends Component {
           />
         </form>
         <div className="flex" style={{ justifyContent: "center" }}>
-          {this.state.data ? (
+          {recipesData ? (
             <Grid item xs={12}>
               <Grid container justify="center" spacing={Number(16)}>
-                {this.state.data.recipes &&
-                  this.state.data.recipes.map((recipe, idx) => {
+                {recipesData.recipes &&
+                  recipesData.recipes.map((recipe, idx) => {
                     return (
                       <Grid item key={idx}>
                         <Link href={`/post?id=${recipe.recipe_id}`}>
                           <a>
                             <Card className={classes.card}>
                               <CardHeader
-                                avatar={
-                                  <Avatar
-                                    aria-label="Recipe"
-                                    className={classes.avatar}
-                                  >
-                                    R
-                                  </Avatar>
-                                }
                                 action={
                                   <IconButton>
                                     <MoreVertIcon />
@@ -192,6 +180,10 @@ class index extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return state.recipe;
+};
+
 // <CardContent>
 //   <Typography component="p">
 //     This impressive paella is a perfect party dish and a fun
@@ -200,4 +192,9 @@ class index extends Component {
 //   </Typography>
 // </CardContent>
 
-export default withStyles(styles)(index);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { getRecipes }
+  )(index)
+);
