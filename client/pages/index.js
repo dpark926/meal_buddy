@@ -48,6 +48,9 @@ const styles = theme => ({
   card: {
     width: 300
   },
+  content: {
+    height: 110
+  },
   media: {
     height: 0,
     paddingTop: "56.25%" // 16:9
@@ -83,7 +86,12 @@ class index extends Component {
   }
 
   componentDidMount() {
-    this.props.getRecipes();
+    const { recipesData } = this.props;
+
+    if (recipesData.length === 0) {
+      console.log("recipes api call");
+      this.props.getRecipes();
+    }
   }
 
   handleChange = e => {
@@ -146,16 +154,17 @@ class index extends Component {
                         <Link href={`/post?id=${recipe.recipe_id}`}>
                           <a>
                             <Card className={classes.card}>
-                              <CardHeader
-                                action={
-                                  <IconButton>
-                                    <MoreVertIcon />
-                                  </IconButton>
-                                }
-                                title={recipe.title}
-                                subheader={recipe.publisher}
-                                style={{ height: 100 }}
-                              />
+                              <CardContent className={classes.content}>
+                                <Typography component="h6" variant="subtitle1">
+                                  {recipe.title}
+                                </Typography>
+                                <Typography
+                                  variant="subtitle2"
+                                  color="textSecondary"
+                                >
+                                  {recipe.publisher}
+                                </Typography>
+                              </CardContent>
                               <CardMedia
                                 className={classes.media}
                                 image={recipe.image_url}
