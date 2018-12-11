@@ -29,10 +29,7 @@ class Layout extends Component {
         >
           <div className="flex">
             <ShoppingList onToggle={this.onToggle} listOpen={listOpen} />
-            <div
-              className="py4"
-              style={{ flexGrow: 5, paddingLeft: listOpen && 250 }}
-            >
+            <div style={{ flexGrow: 5, paddingLeft: listOpen && 250 }}>
               {children}
             </div>
           </div>

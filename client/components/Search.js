@@ -3,6 +3,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+import { connect } from "react-redux";
+import { getRecipes } from "../actions/recipeActions";
 
 const styles = theme => ({
   layout: {
@@ -46,15 +48,6 @@ class Search extends Component {
 
     // fetch(API + DEFAULT_QUERY)
     this.props.getRecipes(encodeURI(this.state.item));
-
-    // fetch(
-    //   `${keys.food2forkAPI}key=${keys.food2forkAPIKey}&q=${encodeURI(
-    //     this.state.item
-    //   )}`
-    // )
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ data, isLoading: false }))
-    //   .catch(error => this.setState({ error, isLoading: false }));
   };
 
   render() {
@@ -89,4 +82,13 @@ class Search extends Component {
   }
 }
 
-export default withStyles(styles)(Search);
+const mapStateToProps = state => {
+  return state.list;
+};
+
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { getRecipes }
+  )(Search)
+);

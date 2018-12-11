@@ -97,18 +97,18 @@ module.exports =
 /*!**************************!*\
   !*** ./actions/types.js ***!
   \**************************/
-/*! exports provided: GET_ITEMS, ADD_ITEMS, DELETE_ITEMS, GET_RECIPES */
+/*! exports provided: GET_SHOPPING_ITEMS, ADD_SHOPPING_ITEMS, DELETE_SHOPPING_ITEMS, GET_RECIPES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ITEMS", function() { return GET_ITEMS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ITEMS", function() { return ADD_ITEMS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ITEMS", function() { return DELETE_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SHOPPING_ITEMS", function() { return GET_SHOPPING_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SHOPPING_ITEMS", function() { return ADD_SHOPPING_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_SHOPPING_ITEMS", function() { return DELETE_SHOPPING_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_RECIPES", function() { return GET_RECIPES; });
-var GET_ITEMS = "GET_ITEMS";
-var ADD_ITEMS = "ADD_ITEMS";
-var DELETE_ITEMS = "DELETE_ITEMS";
+var GET_SHOPPING_ITEMS = "GET_SHOPPING_ITEMS";
+var ADD_SHOPPING_ITEMS = "ADD_SHOPPING_ITEMS";
+var DELETE_SHOPPING_ITEMS = "DELETE_SHOPPING_ITEMS";
 var GET_RECIPES = "GET_RECIPES";
 
 /***/ }),
@@ -493,10 +493,10 @@ var initialState = {
       payload = _ref.payload;
 
   switch (type) {
-    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"]:
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["GET_SHOPPING_ITEMS"]:
       return _objectSpread({}, state);
 
-    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ITEMS"]:
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_SHOPPING_ITEMS"]:
       var copy = state;
       copy.list.push(payload);
       return _objectSpread({}, copy);
@@ -531,6 +531,8 @@ var initialState = {
 
   switch (type) {
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["GET_RECIPES"]:
+      console.log("REDUX_REDUCER: GET_RECIPES");
+      console.log(payload);
       return {
         recipesData: payload
       };

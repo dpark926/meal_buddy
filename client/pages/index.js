@@ -12,8 +12,12 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 import red from "@material-ui/core/colors/red";
-import { keys } from "../config/keys";
 import { connect } from "react-redux";
 import { getRecipes } from "../actions/recipeActions";
 
@@ -61,29 +65,52 @@ const styles = theme => ({
   },
   progress: {
     margin: theme.spacing.unit * 2
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120
   }
 });
 
 class index extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { sortBy: "popular" };
   }
 
   componentDidMount() {
     const { recipesData } = this.props;
 
     if (recipesData.length === 0) {
-      console.log("recipes api call");
       this.props.getRecipes();
     }
   }
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     const { classes, recipesData } = this.props;
 
     return (
       <Layout>
+        <div
+          className="flex"
+          style={{ justifyContent: "flex-end", alignItems: "center" }}
+        >
+          <InputLabel>Sort By:</InputLabel>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <Select
+              value={this.state.sortBy}
+              onChange={this.handleChange}
+              input={<OutlinedInput labelWidth={0} name="sortBy" />}
+            >
+              <MenuItem value={"popular"}>Popularity</MenuItem>
+              <MenuItem value={"top_rated"}>Top Rated</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
         <div className="flex" style={{ justifyContent: "center" }}>
           {recipesData ? (
             <Grid item xs={12}>
@@ -133,14 +160,6 @@ class index extends Component {
 const mapStateToProps = state => {
   return state.recipe;
 };
-
-// <CardContent>
-//   <Typography component="p">
-//     This impressive paella is a perfect party dish and a fun
-//     meal to cook together with your guests. Add 1 cup of
-//     frozen peas along with the mussels, if you like.
-//   </Typography>
-// </CardContent>
 
 export default withStyles(styles)(
   connect(

@@ -1,14 +1,18 @@
-import { GET_ITEMS, ADD_ITEMS, DELETE_ITEMS } from "../actions/types";
+import {
+  GET_SHOPPING_ITEMS,
+  ADD_SHOPPING_ITEMS,
+  DELETE_SHOPPING_ITEMS
+} from "../actions/types";
 
 const initialState = { list: [] };
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
-    case GET_ITEMS:
+    case GET_SHOPPING_ITEMS:
       return {
         ...state
       };
-    case ADD_ITEMS:
+    case ADD_SHOPPING_ITEMS:
       const copy = state;
       copy.list.push(payload);
       return { ...copy };

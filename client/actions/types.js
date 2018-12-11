@@ -1,5 +1,5 @@
-export const GET_ITEMS = "GET_ITEMS";
-export const ADD_ITEMS = "ADD_ITEMS";
-export const DELETE_ITEMS = "DELETE_ITEMS";
+export const GET_SHOPPING_ITEMS = "GET_SHOPPING_ITEMS";
+export const ADD_SHOPPING_ITEMS = "ADD_SHOPPING_ITEMS";
+export const DELETE_SHOPPING_ITEMS = "DELETE_SHOPPING_ITEMS";
 
 export const GET_RECIPES = "GET_RECIPES";
