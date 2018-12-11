@@ -2,14 +2,11 @@ import React, { Component, Fragment } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import withStyles from "@material-ui/core/styles/withStyles";
-import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -32,19 +29,7 @@ const styles = theme => ({
       marginRight: "auto"
     }
   },
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    [theme.breakpoints.up("sm")]: {
-      width: 640
-    },
-    margin: "auto"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: "100%"
-  },
+
   card: {
     width: 300
   },
@@ -82,7 +67,7 @@ const styles = theme => ({
 class index extends Component {
   constructor() {
     super();
-    this.state = { item: "" };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -94,55 +79,11 @@ class index extends Component {
     }
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  searchRecipe = e => {
-    e.preventDefault();
-
-    // fetch(API + DEFAULT_QUERY)
-    this.props.getRecipes(encodeURI(this.state.item));
-
-    // fetch(
-    //   `${keys.food2forkAPI}key=${keys.food2forkAPIKey}&q=${encodeURI(
-    //     this.state.item
-    //   )}`
-    // )
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ data, isLoading: false }))
-    //   .catch(error => this.setState({ error, isLoading: false }));
-  };
-
   render() {
     const { classes, recipesData } = this.props;
 
     return (
       <Layout>
-        <form
-          className={classes.container}
-          noValidate
-          autoComplete="off"
-          onSubmit={this.searchRecipe}
-        >
-          <TextField
-            id="standard-name"
-            label="Search for recipe"
-            name="item"
-            variant="outlined"
-            className={classes.textField}
-            value={this.state.item}
-            onChange={this.handleChange}
-            margin="normal"
-            InputProps={{
-              endAdornment: (
-                <IconButton>
-                  <SearchIcon />
-                </IconButton>
-              )
-            }}
-          />
-        </form>
         <div className="flex" style={{ justifyContent: "center" }}>
           {recipesData ? (
             <Grid item xs={12}>
