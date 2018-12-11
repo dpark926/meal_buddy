@@ -3,10 +3,8 @@ import { keys } from "../config/keys";
 
 export const getRecipes = (searchItem, sortBy) => dispatch => {
   console.log("REDUX_ACTION: getRecipes");
-  console.log(searchItem);
-  console.log(sortBy);
 
-  let sort = "popular";
+  let sort;
 
   switch (sortBy) {
     case "popular":

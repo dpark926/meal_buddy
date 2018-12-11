@@ -82,12 +82,15 @@ class index extends Component {
     const { recipesData } = this.props;
 
     if (recipesData.length === 0) {
-      this.props.getRecipes();
+      this.props.getRecipes("", this.state.sortBy);
     }
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    if (this.state.sortBy !== e.target.value) {
+      this.props.getRecipes("", e.target.value);
+    }
   };
 
   render() {
