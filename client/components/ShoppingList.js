@@ -31,7 +31,9 @@ const styles = theme => ({
   },
   container: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -203,18 +205,23 @@ class ShoppingList extends Component {
               </div>
             )}
             <div className="px2">
-              <Typography variant="h6" component="h6" align="center">
+              <Typography variant="h6" component="h6" align="left">
                 My Shopping List
               </Typography>
-              <List>
+              <List
+                style={{
+                  overflow: "auto",
+                  height: "calc(100vh - 200px)"
+                }}
+              >
                 {newList.map((item, idx) => {
                   const strikethrough = this.state.checked.includes(idx);
 
                   if (typeof item === "string") {
                     return (
-                      <div key={idx}>
+                      <div className="category-border" key={idx}>
                         <Typography variant="h6" component="h6" align="left">
-                          {item.toUpperCase()}
+                          {item}
                         </Typography>
                       </div>
                     );

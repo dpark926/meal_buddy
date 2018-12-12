@@ -68,8 +68,11 @@ class index extends Component {
     return (
       <Layout>
         <div
-          className="flex"
-          style={{ justifyContent: "flex-end", alignItems: "center" }}
+          className="flex p2"
+          style={{
+            justifyContent: "flex-end",
+            alignItems: "center"
+          }}
         >
           <InputLabel>Sort By:</InputLabel>
           <FormControl variant="outlined" className={classes.formControl}>
