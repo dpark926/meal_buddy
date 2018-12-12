@@ -7,33 +7,14 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   toolbarMain: {
-    borderBottom: `1px solid ${theme.palette.grey[300]}`,
+    borderTop: `1px solid ${theme.palette.grey[300]}`,
     bottom: 0,
     width: "100%",
-    background: "white",
-    zIndex: 10
+    background: "white"
   },
   toolbarTitle: {
     display: "flex",
     flex: 1
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%"
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: 120,
-      "&:focus": {
-        width: 200
-      }
-    }
   }
 });
 
@@ -54,30 +35,12 @@ const Footer = props => {
             <ShoppingBasketIcon
               style={{ color: "red" }}
               className="mr1"
-              fontSize="large"
+              fontSize="default"
             />
             <span className="bold">MEAL</span>BUDDY
           </a>
         </Link>
       </Typography>
-      <Link href="/register">
-        <a className="mr1">
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Register
-          </Button>
-        </a>
-      </Link>
-      <Link href="/login">
-        <a>
-          <Button size="small">Login</Button>
-        </a>
-      </Link>
     </Toolbar>
   );
 };

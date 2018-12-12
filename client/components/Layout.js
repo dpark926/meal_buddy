@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header2 from "./Header2";
+import Header from "./Header";
 import Footer from "./Footer";
 import ShoppingList from "../components/ShoppingList";
 
@@ -22,7 +22,7 @@ class Layout extends Component {
 
     return (
       <div style={{ background: "white" }}>
-        <Header2 />
+        <Header />
         <div
           className="absolute col-12"
           style={{ paddingTop: 64, height: "100%", background: "white" }}

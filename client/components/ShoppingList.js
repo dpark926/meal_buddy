@@ -11,6 +11,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Typography from "@material-ui/core/Typography";
+import Slide from "@material-ui/core/Slide";
 import ingredientList from "../src/ingredients";
 import { autoComplete, sortShoppingList } from "../util/functions";
 import { connect } from "react-redux";
@@ -152,108 +153,107 @@ class ShoppingList extends Component {
           borderRight: "1px solid lightgray"
         }}
       >
-        <main
-          className={classes.layout}
-          style={{ display: !listOpen ? "none" : "block" }}
-        >
-          {this.props.list &&
-            this.props.list.map((recipe, idx) => {
-              return (
-                <div key={idx}>
-                  <p>{recipe.title}</p>
-                </div>
-              );
-            })}
-          <form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-            onSubmit={this.onSubmit}
-          >
-            <TextField
-              id="standard-name"
-              label="Add ingredient"
-              name="item"
-              variant="outlined"
-              className={classes.textField}
-              value={this.state.item}
-              onChange={this.handleChange}
-              margin="normal"
-            />
-          </form>
-          {item && (
-            <div
-              className="absolute px1 col-12"
-              style={{ background: "white", marginTop: -8, zIndex: 1 }}
+        <Slide direction="right" in={listOpen} mountOnEnter unmountOnExit>
+          <main className={classes.layout}>
+            {this.props.list &&
+              this.props.list.map((recipe, idx) => {
+                return (
+                  <div key={idx}>
+                    <p>{recipe.title}</p>
+                  </div>
+                );
+              })}
+            <form
+              className={classes.container}
+              noValidate
+              autoComplete="off"
+              onSubmit={this.onSubmit}
             >
+              <TextField
+                id="standard-name"
+                label="Add ingredient"
+                name="item"
+                variant="outlined"
+                className={classes.textField}
+                value={this.state.item}
+                onChange={this.handleChange}
+                margin="normal"
+              />
+            </form>
+            {item && (
+              <div
+                className="absolute px1 col-12"
+                style={{ background: "white", marginTop: -8, zIndex: 1 }}
+              >
+                <List>
+                  {autoComplete(ingredientList, item)
+                    .slice(0, 5)
+                    .map((ingredient, idx) => {
+                      return (
+                        <ListItem
+                          button
+                          key={idx}
+                          onClick={() => this.addToList(ingredient)}
+                        >
+                          <ListItemText primary={ingredient.name} />
+                        </ListItem>
+                      );
+                    })}
+                </List>
+              </div>
+            )}
+            <div className="px2">
+              <Typography variant="h6" component="h6" align="center">
+                My Shopping List
+              </Typography>
               <List>
-                {autoComplete(ingredientList, item)
-                  .slice(0, 5)
-                  .map((ingredient, idx) => {
+                {newList.map((item, idx) => {
+                  const strikethrough = this.state.checked.includes(idx);
+
+                  if (typeof item === "string") {
+                    return (
+                      <div key={idx}>
+                        <Typography variant="h6" component="h6" align="left">
+                          {item.toUpperCase()}
+                        </Typography>
+                      </div>
+                    );
+                  } else {
                     return (
                       <ListItem
-                        button
                         key={idx}
-                        onClick={() => this.addToList(ingredient)}
+                        role={undefined}
+                        dense
+                        button
+                        onClick={this.handleToggle(idx)}
+                        style={{ padding: 0 }}
                       >
-                        <ListItemText primary={ingredient.name} />
+                        <Checkbox
+                          checked={this.state.checked.indexOf(idx) !== -1}
+                          tabIndex={-1}
+                          disableRipple
+                        />
+                        <ListItemText
+                          primary={item.name}
+                          style={{
+                            textDecoration: strikethrough && "line-through"
+                          }}
+                        />
+                        <ListItemSecondaryAction>
+                          <IconButton aria-label="Comments">
+                            <DeleteOutlineIcon
+                              onClick={() => this.deleteItem(item)}
+                            />
+                          </IconButton>
+                        </ListItemSecondaryAction>
                       </ListItem>
                     );
-                  })}
+                  }
+                })}
               </List>
             </div>
-          )}
-          <div className="px2">
-            <Typography variant="h6" component="h6" align="center">
-              My Shopping List
-            </Typography>
-            <List>
-              {newList.map((item, idx) => {
-                const strikethrough = this.state.checked.includes(idx);
-
-                if (typeof item === "string") {
-                  return (
-                    <div key={idx}>
-                      <Typography variant="h6" component="h6" align="left">
-                        {item.toUpperCase()}
-                      </Typography>
-                    </div>
-                  );
-                } else {
-                  return (
-                    <ListItem
-                      key={idx}
-                      role={undefined}
-                      dense
-                      button
-                      onClick={this.handleToggle(idx)}
-                      style={{ padding: 0 }}
-                    >
-                      <Checkbox
-                        checked={this.state.checked.indexOf(idx) !== -1}
-                        tabIndex={-1}
-                        disableRipple
-                      />
-                      <ListItemText
-                        primary={item.name}
-                        style={{
-                          textDecoration: strikethrough && "line-through"
-                        }}
-                      />
-                      <ListItemSecondaryAction>
-                        <IconButton aria-label="Comments">
-                          <DeleteOutlineIcon
-                            onClick={() => this.deleteItem(item)}
-                          />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                  );
-                }
-              })}
-            </List>
-          </div>
-        </main>
+          </main>
+        </Slide>
         <div className="relative" onClick={onToggle}>
           <div
             className={classes.toggle}
