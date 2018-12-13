@@ -152,7 +152,9 @@ class ShoppingList extends Component {
           height: "calc(100vh - 64px)",
           width: !listOpen && 0,
           flexGrow: listOpen && 1,
-          borderRight: "1px solid lightgray"
+          borderRight: "1px solid lightgray",
+          zIndex: 100,
+          background: "white"
         }}
       >
         <Slide direction="right" in={listOpen} mountOnEnter unmountOnExit>
@@ -204,61 +206,69 @@ class ShoppingList extends Component {
                 </List>
               </div>
             )}
-            <div className="px2">
-              <Typography variant="h6" component="h6" align="left">
-                My Shopping List
-              </Typography>
-              <List
-                style={{
-                  overflow: "auto",
-                  height: "calc(100vh - 200px)"
-                }}
-              >
-                {newList.map((item, idx) => {
-                  const strikethrough = this.state.checked.includes(idx);
+            <Typography
+              variant="p"
+              component="p"
+              align="left"
+              style={{
+                background: "#f2f0eb",
+                padding: "0.5rem 1rem",
+                borderTop: "1px solid lightgray",
+                borderBottom: "1px solid lightgray"
+              }}
+            >
+              My Shopping List
+            </Typography>
+            <List
+              style={{
+                overflow: "auto",
+                height: "calc(100vh - 200px)"
+              }}
+            >
+              {newList.map((item, idx) => {
+                const strikethrough = this.state.checked.includes(idx);
 
-                  if (typeof item === "string") {
-                    return (
-                      <div className="category-border" key={idx}>
-                        <Typography variant="h6" component="h6" align="left">
-                          {item}
-                        </Typography>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <ListItem
-                        key={idx}
-                        role={undefined}
-                        dense
-                        button
-                        onClick={this.handleToggle(idx)}
-                        style={{ padding: 0 }}
-                      >
-                        <Checkbox
-                          checked={this.state.checked.indexOf(idx) !== -1}
-                          tabIndex={-1}
-                          disableRipple
-                        />
-                        <ListItemText
-                          primary={item.name}
-                          style={{
-                            textDecoration: strikethrough && "line-through"
-                          }}
-                        />
-                        <ListItemSecondaryAction>
-                          <IconButton aria-label="Comments">
-                            <DeleteOutlineIcon
-                              onClick={() => this.deleteItem(item)}
-                            />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                    );
-                  }
-                })}
-              </List>
-            </div>
+                if (typeof item === "string") {
+                  return (
+                    <div className="category-border px2" key={idx}>
+                      <Typography variant="h6" component="h6" align="left">
+                        {item}
+                      </Typography>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <ListItem
+                      key={idx}
+                      role={undefined}
+                      dense
+                      button
+                      onClick={this.handleToggle(idx)}
+                      style={{ padding: 0 }}
+                    >
+                      <Checkbox
+                        checked={this.state.checked.indexOf(idx) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                      />
+                      <ListItemText
+                        primary={item.name}
+                        style={{
+                          textDecoration: strikethrough && "line-through"
+                        }}
+                      />
+                      <ListItemSecondaryAction>
+                        <IconButton aria-label="Comments">
+                          <DeleteOutlineIcon
+                            onClick={() => this.deleteItem(item)}
+                          />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                  );
+                }
+              })}
+            </List>
           </main>
         </Slide>
         <div className="relative" onClick={onToggle}>
