@@ -7,7 +7,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
@@ -17,9 +16,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import IconButton from "@material-ui/core/IconButton";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import BookmarkIcon from "@material-ui/icons/Bookmark";
 import red from "@material-ui/core/colors/red";
 import { connect } from "react-redux";
 import { getRecipes } from "../actions/recipeActions";
+import { addBookmark } from "../actions/bookmarkActions";
 
 const styles = theme => ({
   card: {
@@ -30,7 +33,8 @@ const styles = theme => ({
     }
   },
   content: {
-    height: 110
+    height: 110,
+    display: "flex"
   },
   media: {
     height: 0,
@@ -42,6 +46,16 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120
+  },
+  avatar: {
+    backgroundColor: red[500]
+  },
+  bookmark: {
+    padding: 0,
+    height: 0,
+    "&:hover": {
+      color: "red"
+    }
   }
 });
 
@@ -66,11 +80,32 @@ class recipes extends Component {
     }
   };
 
+  bookmark = recipe => {
+    console.log(recipe);
+    this.props.addBookmark(recipe);
+  };
+
+  componentDidUpdate(prevProps) {
+    console.log("HEY");
+    console.log(this.props.bookmarksData);
+    console.log(prevProps.bookmarksData);
+    if (this.props.bookmarksData !== prevProps.bookmarksData) {
+      this.render();
+    }
+  }
+
   render() {
-    const { classes, recipesData } = this.props;
+    const { classes, recipesData, bookmarksData } = this.props;
+
+    console.log(this.props);
 
     return (
       <Layout>
+        <div>
+          {bookmarksData.map(recipe => {
+            return <div>{recipe.title}</div>;
+          })}
+        </div>
         <div
           className="flex p2"
           style={{
@@ -98,29 +133,48 @@ class recipes extends Component {
                   recipesData.recipes.map((recipe, idx) => {
                     return (
                       <Grid item key={idx}>
-                        <Link href={`/post?id=${recipe.recipe_id}`}>
-                          <a>
-                            <Card className={classes.card} id="recipe-card">
-                              <CardContent className={classes.content}>
-                                <Typography component="h6" variant="subtitle1">
-                                  {recipe.title}
-                                </Typography>
-                                <Typography
-                                  variant="subtitle2"
-                                  color="textSecondary"
-                                >
-                                  {recipe.publisher}
-                                </Typography>
-                              </CardContent>
+                        <Card className={classes.card} id="recipe-card">
+                          <CardContent className={classes.content}>
+                            <Link href={`/post?id=${recipe.recipe_id}`}>
+                              <a className="flex-auto">
+                                <div>
+                                  <Typography
+                                    component="h6"
+                                    variant="subtitle1"
+                                  >
+                                    {recipe.title}
+                                  </Typography>
+                                  <Typography
+                                    variant="subtitle2"
+                                    color="textSecondary"
+                                  >
+                                    {recipe.publisher}
+                                  </Typography>
+                                </div>
+                              </a>
+                            </Link>
+                            <IconButton
+                              className={classes.bookmark}
+                              onClick={() => this.bookmark(recipe)}
+                            >
+                              {bookmarksData.includes(recipe) ? (
+                                <BookmarkIcon style={{ color: "red" }} />
+                              ) : (
+                                <BookmarkBorderIcon />
+                              )}
+                            </IconButton>
+                          </CardContent>
+                          <Link href={`/post?id=${recipe.recipe_id}`}>
+                            <a className="relative">
                               <CardMedia
                                 className={classes.media}
                                 image={recipe.image_url}
                                 title={recipe.title}
                                 id="recipe-card-img"
                               />
-                            </Card>
-                          </a>
-                        </Link>
+                            </a>
+                          </Link>
+                        </Card>
                       </Grid>
                     );
                   })}
@@ -138,12 +192,13 @@ class recipes extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.recipe;
+  console.log(state);
+  return { ...state.recipe, ...state.bookmark };
 };
 
 export default withStyles(styles)(
   connect(
     mapStateToProps,
-    { getRecipes }
+    { getRecipes, addBookmark }
   )(recipes)
 );

@@ -97,7 +97,7 @@ module.exports =
 /*!**************************!*\
   !*** ./actions/types.js ***!
   \**************************/
-/*! exports provided: GET_SHOPPING_ITEMS, ADD_SHOPPING_ITEMS, DELETE_SHOPPING_ITEMS, GET_RECIPES */
+/*! exports provided: GET_SHOPPING_ITEMS, ADD_SHOPPING_ITEMS, DELETE_SHOPPING_ITEMS, GET_BOOKMARKS, ADD_BOOKMARK, GET_RECIPES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105,10 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SHOPPING_ITEMS", function() { return GET_SHOPPING_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SHOPPING_ITEMS", function() { return ADD_SHOPPING_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_SHOPPING_ITEMS", function() { return DELETE_SHOPPING_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BOOKMARKS", function() { return GET_BOOKMARKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_BOOKMARK", function() { return ADD_BOOKMARK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_RECIPES", function() { return GET_RECIPES; });
 var GET_SHOPPING_ITEMS = "GET_SHOPPING_ITEMS";
 var ADD_SHOPPING_ITEMS = "ADD_SHOPPING_ITEMS";
 var DELETE_SHOPPING_ITEMS = "DELETE_SHOPPING_ITEMS";
+var GET_BOOKMARKS = "GET_BOOKMARKS";
+var ADD_BOOKMARK = "ADD_BOOKMARK";
 var GET_RECIPES = "GET_RECIPES";
 
 /***/ }),
@@ -444,6 +448,53 @@ function (_App) {
 
 /***/ }),
 
+/***/ "./reducers/bookmarkReducer.js":
+/*!*************************************!*\
+  !*** ./reducers/bookmarkReducer.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ "./actions/types.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  bookmarksData: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined,
+      type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["GET_BOOKMARKS"]:
+      return _objectSpread({}, state);
+
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_BOOKMARK"]:
+      var copy = Object.assign({}, state);
+
+      if (!copy.bookmarksData.includes(payload)) {
+        copy.bookmarksData.push(payload);
+        console.log(_objectSpread({}, copy));
+        console.log(state); // return Object.assign({ ...copy });
+
+        return _objectSpread({}, copy);
+      }
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./reducers/index.js":
 /*!***************************!*\
   !*** ./reducers/index.js ***!
@@ -457,12 +508,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _itemReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./itemReducer */ "./reducers/itemReducer.js");
 /* harmony import */ var _recipeReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipeReducer */ "./reducers/recipeReducer.js");
+/* harmony import */ var _bookmarkReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookmarkReducer */ "./reducers/bookmarkReducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   list: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  recipe: _recipeReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  recipe: _recipeReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  bookmark: _bookmarkReducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),

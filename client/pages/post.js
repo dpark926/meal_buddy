@@ -43,6 +43,7 @@ class Post extends Component {
 
     // this.setState({ list: data.recipe });
     this.props.addItems(data.recipe);
+    console.log(data.recipe);
   };
 
   render() {
