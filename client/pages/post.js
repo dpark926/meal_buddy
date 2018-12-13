@@ -78,7 +78,10 @@ class Post extends Component {
                   );
                 })}
               </List>
-              <button onClick={this.addToList}>Add to List</button>
+              <button onClick={this.addToList}>Add to Favorite</button>
+              <button onClick={this.addToList}>
+                Add Ingredients to Shopping List
+              </button>
             </div>
           </div>
         ) : (

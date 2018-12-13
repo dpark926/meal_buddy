@@ -25,9 +25,9 @@ class Layout extends Component {
         <Header />
         <div
           className="absolute col-12"
-          style={{ paddingTop: 64, height: "100%", background: "white" }}
+          style={{ paddingTop: 64, background: "white" }}
         >
-          <div className="flex mb4 overflow-auto">
+          <div className="flex mb4 overflow-hidden">
             <ShoppingList onToggle={this.onToggle} listOpen={listOpen} />
             <div style={{ flexGrow: 5, paddingLeft: listOpen && 250 }}>
               {children}

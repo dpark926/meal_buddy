@@ -23,7 +23,11 @@ import { getRecipes } from "../actions/recipeActions";
 
 const styles = theme => ({
   card: {
-    width: 300
+    width: 300,
+    position: "relative",
+    "&:hover": {
+      textDecoration: "underline"
+    }
   },
   content: {
     height: 110
@@ -96,7 +100,7 @@ class index extends Component {
                       <Grid item key={idx}>
                         <Link href={`/post?id=${recipe.recipe_id}`}>
                           <a>
-                            <Card className={classes.card}>
+                            <Card className={classes.card} id="recipe-card">
                               <CardContent className={classes.content}>
                                 <Typography component="h6" variant="subtitle1">
                                   {recipe.title}
@@ -112,6 +116,7 @@ class index extends Component {
                                 className={classes.media}
                                 image={recipe.image_url}
                                 title={recipe.title}
+                                id="recipe-card-img"
                               />
                             </Card>
                           </a>

@@ -30,7 +30,8 @@ const styles = theme => ({
   collapse: {
     position: "absolute",
     width: "100%",
-    height: "calc(100vh - 64px)"
+    height: "calc(100vh - 64px)",
+    background: "rgba(0, 0, 0, 0.5)"
   }
 });
 

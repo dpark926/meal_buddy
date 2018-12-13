@@ -12,3 +12,18 @@ a {
     margin: 10px 0;
   }
 }
+
+#recipe-card {
+  &:hover {
+    &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      background: white;
+      opacity: 0.5;
+      bottom: 0;
+      height: calc(100% - 110px);
+      width: 100%;
+    }
+  }
+}

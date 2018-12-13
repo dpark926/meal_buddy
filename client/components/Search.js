@@ -18,7 +18,8 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: "100%"
+    width: "100%",
+    margin: "1rem"
   }
 });
 
