@@ -75,6 +75,18 @@ class Header extends Component {
               </a>
             </Link>
           </Typography>
+          <div className="ml2">
+            <Link href="/recipes">
+              <a>
+                <Button size="small">Recipes</Button>
+              </a>
+            </Link>
+            <Link href="/schedule">
+              <a>
+                <Button size="small">Schedule</Button>
+              </a>
+            </Link>
+          </div>
           <IconButton onClick={this.toggleSearchBar}>
             <SearchIcon />
           </IconButton>
