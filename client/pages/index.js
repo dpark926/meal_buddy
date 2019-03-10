@@ -13,7 +13,6 @@ class index extends Component {
     return (
       <Layout>
         <Hero />
-        <div>Homepage</div>
       </Layout>
     );
   }

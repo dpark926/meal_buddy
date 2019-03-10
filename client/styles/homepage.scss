@@ -1,16 +1,19 @@
 @import "./variables.scss";
 
 main {
-  // background-image: linear-gradient(
-  //     rgba(20, 20, 20, 0.5),
-  //     rgba(20, 20, 20, 0.5)
-  //   ),
-  //   url("https://images.unsplash.com/photo-1512389180939-34b58175adff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
-  // background-color: black;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-position: center;
-  color: white;
+}
+
+.bg-container {
+  background-image: linear-gradient(
+      rgba(220, 220, 220, 0.5),
+      rgba(220, 220, 220, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1526049332082-27f8e41d5e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: black;
   flex-direction: column;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -24,40 +27,8 @@ main {
 .hero-section {
   text-align: center;
   width: 100%;
-
-  @media only screen and (min-width: $break-medium) {
-    text-align: left;
-
-    .hero-left {
-      padding: 2rem;
-      max-width: 450px;
-    }
-
-    .hero-right {
-      padding: 2rem;
-      max-width: 450px;
-    }
-  }
-
-  @media only screen and (min-width: $break-large) {
-    .hero-left {
-      padding-left: 3rem;
-    }
-
-    .hero-right {
-      padding-right: 3rem;
-    }
-  }
-
-  @media only screen and (min-width: $break-xlarge) {
-    .hero-left {
-      padding: 4rem;
-    }
-
-    .hero-right {
-      padding: 4rem;
-    }
-  }
+  text-align: center;
+  min-height: 600px;
 
   .hero-header {
     font-size: 2.5rem;
@@ -66,14 +37,13 @@ main {
       font-size: 3rem;
     }
     @media only screen and (min-width: $break-large) {
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 
   .hero-tagline {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     line-height: 1.25;
-    color: $dark-white;
   }
 }
 
