@@ -9,13 +9,10 @@ export default function(state = initialState, { type, payload }) {
         ...state
       };
     case ADD_BOOKMARK:
-      const copy = Object.assign({}, state);
-      if (!copy.bookmarksData.includes(payload)) {
-        copy.bookmarksData.push(payload);
-        console.log({ ...copy });
-        console.log(state);
-        // return Object.assign({ ...copy });
-        return { ...copy };
+      const copy = state.bookmarksData.slice();
+      if (!copy.includes(payload)) {
+        copy.push(payload);
+        return { bookmarksData: copy };
       }
     default:
       return state;

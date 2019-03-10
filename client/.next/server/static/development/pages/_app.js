@@ -478,14 +478,13 @@ var initialState = {
       return _objectSpread({}, state);
 
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["ADD_BOOKMARK"]:
-      var copy = Object.assign({}, state);
+      var copy = state.bookmarksData.slice();
 
-      if (!copy.bookmarksData.includes(payload)) {
-        copy.bookmarksData.push(payload);
-        console.log(_objectSpread({}, copy));
-        console.log(state); // return Object.assign({ ...copy });
-
-        return _objectSpread({}, copy);
+      if (!copy.includes(payload)) {
+        copy.push(payload);
+        return {
+          bookmarksData: copy
+        };
       }
 
     default:

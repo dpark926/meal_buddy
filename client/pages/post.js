@@ -54,21 +54,23 @@ class Post extends Component {
       <Layout>
         {data ? (
           <div className="flex p2">
-            <div className="px3 center">
+            <div className="col-6 px3 center">
               <Link href={data.recipe.source_url}>
                 <a className="h1 center">{data.recipe.title}</a>
               </Link>
               <p className="h4 center">From: {data.recipe.publisher}</p>
               <Link href={data.recipe.source_url}>
                 <a>
-                  <img
-                    src={data.recipe.image_url}
-                    className={classes.recipeImg}
-                  />
+                  <div className="m2 center col-12">
+                    <img
+                      src={data.recipe.image_url}
+                      className={classes.recipeImg}
+                    />
+                  </div>
                 </a>
               </Link>
             </div>
-            <div className="p2">
+            <div className="col-6 p2">
               <List>
                 <p className="h3">Ingredients</p>
                 {data.recipe.ingredients.map((ingredient, idx) => {

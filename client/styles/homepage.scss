@@ -1,0 +1,103 @@
+@import "./variables.scss";
+
+main {
+  // background-image: linear-gradient(
+  //     rgba(20, 20, 20, 0.5),
+  //     rgba(20, 20, 20, 0.5)
+  //   ),
+  //   url("https://images.unsplash.com/photo-1512389180939-34b58175adff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  // background-color: black;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  color: white;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media only screen and (min-width: $break-medium) {
+    flex-direction: row;
+    padding: 2rem;
+  }
+}
+
+.hero-section {
+  text-align: center;
+  width: 100%;
+
+  @media only screen and (min-width: $break-medium) {
+    text-align: left;
+
+    .hero-left {
+      padding: 2rem;
+      max-width: 450px;
+    }
+
+    .hero-right {
+      padding: 2rem;
+      max-width: 450px;
+    }
+  }
+
+  @media only screen and (min-width: $break-large) {
+    .hero-left {
+      padding-left: 3rem;
+    }
+
+    .hero-right {
+      padding-right: 3rem;
+    }
+  }
+
+  @media only screen and (min-width: $break-xlarge) {
+    .hero-left {
+      padding: 4rem;
+    }
+
+    .hero-right {
+      padding: 4rem;
+    }
+  }
+
+  .hero-header {
+    font-size: 2.5rem;
+    font-weight: 500;
+    @media only screen and (min-width: $break-medium) {
+      font-size: 3rem;
+    }
+    @media only screen and (min-width: $break-large) {
+      font-size: 4rem;
+    }
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: $dark-white;
+  }
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.05);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $dark-white;
+  }
+}
+
+.signup-btn {
+  background: $blue;
+  color: white;
+  &:hover {
+    background: $green;
+    -webkit-transition: all 350ms ease-in-out;
+    transition: all 350ms ease-in-out;
+  }
+}
