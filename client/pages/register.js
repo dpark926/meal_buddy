@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Layout from "../components/Layout";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -22,7 +23,8 @@ const styles = theme => ({
       width: 400,
       marginLeft: "auto",
       marginRight: "auto"
-    }
+    },
+    paddingBottom: "0.5rem"
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -62,80 +64,62 @@ class register extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Register
-            </Typography>
-            <form className={classes.form} onSubmit={this.onSubmit}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="first_name">First Name</InputLabel>
-                <Input
-                  id="first_name"
-                  name="first_name"
-                  autoComplete="first_name"
-                  autoFocus
-                  onChange={this.handleChange}
-                />
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="last_name">Last Name</InputLabel>
-                <Input
-                  id="last_name"
-                  name="last_name"
-                  autoComplete="last_name"
-                  autoFocus
-                  onChange={this.handleChange}
-                />
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input
-                  id="email"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  onChange={this.handleChange}
-                />
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <Input
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={this.handleChange}
-                />
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Confirm Password</InputLabel>
-                <Input
-                  name="confirm_password"
-                  type="password"
-                  id="confirm_password"
-                  autoComplete="confirm-password"
-                  onChange={this.handleChange}
-                />
-              </FormControl>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
+      <Layout>
+        <React.Fragment>
+          <CssBaseline />
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
                 Register
-              </Button>
-            </form>
-          </Paper>
-        </main>
-      </React.Fragment>
+              </Typography>
+              <form className={classes.form} onSubmit={this.onSubmit}>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="email">Email Address</InputLabel>
+                  <Input
+                    id="email"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={this.handleChange}
+                  />
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                  <Input
+                    name="password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={this.handleChange}
+                  />
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="password">Confirm Password</InputLabel>
+                  <Input
+                    name="confirm_password"
+                    type="password"
+                    id="confirm_password"
+                    autoComplete="confirm-password"
+                    onChange={this.handleChange}
+                  />
+                </FormControl>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Register
+                </Button>
+              </form>
+            </Paper>
+          </main>
+        </React.Fragment>
+      </Layout>
     );
   }
 }

@@ -75,7 +75,7 @@ class Header extends Component {
               </a>
             </Link>
           </Typography>
-          <div className="ml2">
+          <div className="ml2 mr2">
             <Link href="/recipes">
               <a>
                 <Button size="small">Recipes</Button>
@@ -90,27 +90,29 @@ class Header extends Component {
           <IconButton onClick={this.toggleSearchBar}>
             <SearchIcon />
           </IconButton>
-          <Link href="/register">
-            <a className="mr1">
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Register
-              </Button>
-            </a>
-          </Link>
-          <Link href="/login">
-            <a>
-              <Button size="small">Login</Button>
-            </a>
-          </Link>
+          <div className="flex ml2">
+            <Link href="/register">
+              <a className="mr1">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Register
+                </Button>
+              </a>
+            </Link>
+            <Link href="/login">
+              <a>
+                <Button size="small">Login</Button>
+              </a>
+            </Link>
+          </div>
         </Toolbar>
         <Collapse in={searchBarOpen}>
-          <Search />
+          <Search toggleSearchBar={this.toggleSearchBar} />
           {searchBarOpen && (
             <div className={classes.collapse} onClick={this.toggleSearchBar} />
           )}

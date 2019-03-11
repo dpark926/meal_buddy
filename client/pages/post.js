@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Schedule from "../components/Schedule";
 import { withRouter } from "next/router";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -54,11 +55,7 @@ class Post extends Component {
       <Layout>
         {data ? (
           <div className="flex p2">
-            <div className="col-6 px3 center">
-              <Link href={data.recipe.source_url}>
-                <a className="h1 center">{data.recipe.title}</a>
-              </Link>
-              <p className="h4 center">From: {data.recipe.publisher}</p>
+            <div className="col-6 px3">
               <Link href={data.recipe.source_url}>
                 <a>
                   <div className="m2 center col-12">
@@ -71,6 +68,13 @@ class Post extends Component {
               </Link>
             </div>
             <div className="col-6 p2">
+              <div className="border-bottom center">
+                <Link href={data.recipe.source_url}>
+                  <a className="h2 center">{data.recipe.title}</a>
+                </Link>
+                <p className="h4 center">From: {data.recipe.publisher}</p>
+              </div>
+              <Schedule />
               <List>
                 <p className="h3">Ingredients</p>
                 {data.recipe.ingredients.map((ingredient, idx) => {

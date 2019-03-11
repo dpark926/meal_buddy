@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Router from "next/router";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
@@ -38,6 +39,9 @@ class Search extends Component {
 
     // fetch(API + DEFAULT_QUERY)
     this.props.getRecipes(encodeURI(this.state.item));
+    this.props.toggleSearchBar();
+
+    Router.push("/recipes");
   };
 
   render() {
